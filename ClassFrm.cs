@@ -42,7 +42,7 @@ namespace STDApp
                         {
                              if (IsClassAvailable(model.Name))
                               {
-                                  db.Classes.Add(model);
+                                  db.Class.Add(model);
                                  //MessageBox.Show("تمت الإضافة بنجاح");
                               }
                               else
@@ -74,7 +74,7 @@ namespace STDApp
         {
             using (STDEntities db = new STDEntities())
             {
-                bool Class = db.Classes.Where(m => m.Name == name).Any();
+                bool Class = db.Class.Where(m => m.Name == name).Any();
 
                 return !Class;
 
@@ -88,7 +88,7 @@ namespace STDApp
                 model.ID = Convert.ToInt32(RadGrid.CurrentRow.Cells["ID"].Value);
                 using (STDEntities db = new STDEntities())
                 {
-                    model = db.Classes.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.Class.Where(x => x.ID == model.ID).FirstOrDefault();
                     txtclass.Text = model.Name;
                 }
                 AddBtn.Text = "تعديل";
@@ -105,8 +105,8 @@ namespace STDApp
                 {
                     var entry = db.Entry(model);
                     if (entry.State == EntityState.Detached)
-                        db.Classes.Attach(model);
-                    db.Classes.Remove(model);
+                        db.Class.Attach(model);
+                    db.Class.Remove(model);
                     try
                     {
                         db.SaveChanges();
@@ -144,7 +144,7 @@ namespace STDApp
             RadGrid.AutoGenerateColumns = false;
             using (STDEntities db = new STDEntities())
             {
-                RadGrid.DataSource = db.Classes.ToList<Class>();
+                RadGrid.DataSource = db.Class.ToList<Class>();
             }
         }
     }

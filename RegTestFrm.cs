@@ -28,7 +28,7 @@ namespace STDApp
         }
         private void RegTestFrm_Load(object sender, EventArgs e)
         {
-            registerTestBindingSource.DataSource = dbContext.RegisterTests.Where(a => a.Test_Id == -1).ToList();
+            registerTestBindingSource.DataSource = dbContext.RegisterTest.Where(a => a.Test_Id == -1).ToList();
 
             GridViewTextBoxColumn txtstudent = new GridViewTextBoxColumn("StudentName");
             txtstudent.ReadOnly = true;
@@ -44,10 +44,10 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Classes.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>();
                 radDropclasses.SelectedIndex = -1;
 
-                db.RegisterTests.Load();
+                db.RegisterTest.Load();
 
                 
             }
@@ -74,10 +74,10 @@ namespace STDApp
             var x = Convert.ToInt32(radDroptestperiod.SelectedValue);
             //var z = Convert.ToInt32(radDropSubject.SelectedValue);
             var v = Convert.ToInt32(radDropDepartment.SelectedValue);
-            dbContext.RegisterTests.LoadAsync().ContinueWith(loadTask =>
+            dbContext.RegisterTest.LoadAsync().ContinueWith(loadTask =>
             {
                 // Bind data to control when loading complete
-                registerTestBindingSource.DataSource = dbContext.RegisterTests
+                registerTestBindingSource.DataSource = dbContext.RegisterTest
                           .Where(a => a.Test_Id == x && a.Student.Department_Id == v).ToList();               
             }, System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext());
 
@@ -86,19 +86,19 @@ namespace STDApp
 
         private void radDropclasses_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            registerTestBindingSource.DataSource = dbContext.RegisterTests.Where(a => a.Test_Id == -1).ToList();
+            registerTestBindingSource.DataSource = dbContext.RegisterTest.Where(a => a.Test_Id == -1).ToList();
             radGridView1.DataSource = null;
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Departments
+                radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList();
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
                 radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
-                radDropSubject.DataSource = db.Subjects
+                radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList();
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
@@ -127,11 +127,11 @@ namespace STDApp
 
                 using (STDEntities db = new STDEntities())
                 {
-                    List<int> result = db.RegisterTests
+                    List<int> result = db.RegisterTest
                         .Where(a => a.Test_Id == y)
                         .Select(a => a.Student_Id).ToList();
 
-                    radGridView1.DataSource = (from std in db.Students.Where(c => !result.Contains(c.ID))
+                    radGridView1.DataSource = (from std in db.Student.Where(c => !result.Contains(c.ID))
                                                where std.Department_Id == x
                                                select new
                                                {
@@ -179,7 +179,7 @@ namespace STDApp
                             model.Degree = (int)numdegree.Value;
                             model.Attend = chkattend.Checked;
                             model.IsEarly = false;
-                            db.RegisterTests.Add(model);
+                            db.RegisterTest.Add(model);
                             db.SaveChanges();
                         }
                     }
@@ -203,8 +203,8 @@ namespace STDApp
             if (MessageBox.Show("هل أنت متأكد من الحذف؟", "حذف", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int ID = (int)radGridView.CurrentRow.Cells["ID"].Value;
-                var result = dbContext.RegisterTests.Find(ID);
-                dbContext.RegisterTests.Remove(result);
+                var result = dbContext.RegisterTest.Find(ID);
+                dbContext.RegisterTest.Remove(result);
                 dbContext.SaveChanges();
                 Generate();
                 MessageBox.Show("تم الحذف بنجاح");
@@ -218,7 +218,7 @@ namespace STDApp
         private void MasterTemplate_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
             int ID = (int)radGridView.CurrentRow.Cells["ID"].Value;
-            var result = (from x in dbContext.RegisterTests where x.ID == ID select x).FirstOrDefault();
+            var result = (from x in dbContext.RegisterTest where x.ID == ID select x).FirstOrDefault();
             switch (e.ColumnIndex)
             {
                 case 1:
@@ -239,7 +239,7 @@ namespace STDApp
 
         private void radDropDepartment_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            registerTestBindingSource.DataSource = dbContext.RegisterTests.Where(a => a.Test_Id == -1).ToList();
+            registerTestBindingSource.DataSource = dbContext.RegisterTest.Where(a => a.Test_Id == -1).ToList();
             radGridView1.DataSource = null;
             radDroptestperiod.SelectedIndexChanged -= radDroptestperiod_SelectedIndexChanged;
             radDroptestperiod.DataSource = null;
@@ -250,7 +250,7 @@ namespace STDApp
 
         private void radDropSubject_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            registerTestBindingSource.DataSource = dbContext.RegisterTests.Where(a => a.Test_Id == -1).ToList();
+            registerTestBindingSource.DataSource = dbContext.RegisterTest.Where(a => a.Test_Id == -1).ToList();
             radGridView1.DataSource = null;
             if (radDropSubject.SelectedIndex != -1)
             {
@@ -259,7 +259,7 @@ namespace STDApp
                 var z = Convert.ToInt32(radDropSubject.SelectedValue);
                 var v = Convert.ToInt32(radDropDepartment.SelectedValue);
                 radDroptestperiod.SelectedIndexChanged -= radDroptestperiod_SelectedIndexChanged;
-                radDroptestperiod.DataSource = dbContext.Tests.Where(a => a.Department_Id == v && a.Subject_Id == z).ToList<Test>();
+                radDroptestperiod.DataSource = dbContext.Test.Where(a => a.Department_Id == v && a.Subject_Id == z).ToList<Test>();
                 radDroptestperiod.SelectedIndex = -1;
                 radDroptestperiod.SelectedIndexChanged += radDroptestperiod_SelectedIndexChanged;
             }

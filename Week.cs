@@ -17,8 +17,8 @@ namespace STDApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Week()
         {
-            this.Behaviors = new HashSet<Behavior>();
-            this.Sharings = new HashSet<Sharing>();
+            this.Behavior = new HashSet<Behavior>();
+            this.Sharing = new HashSet<Sharing>();
         }
     
         public int ID { get; set; }
@@ -27,8 +27,8 @@ namespace STDApp
         public string Finish { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Behavior> Behaviors { get; set; }
+        public virtual ICollection<Behavior> Behavior { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sharing> Sharings { get; set; }
+        public virtual ICollection<Sharing> Sharing { get; set; }
     }
 }

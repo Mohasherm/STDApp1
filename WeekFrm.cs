@@ -34,7 +34,7 @@ namespace STDApp
             radGrid.AutoGenerateColumns = false;
             using (STDEntities db = new STDEntities())
             {
-                radGrid.DataSource = db.Weeks.ToList<Week>();
+                radGrid.DataSource = db.Week.ToList<Week>();
             }
         }
 
@@ -76,7 +76,7 @@ namespace STDApp
                     {
                         if (IsWeekNumberAvailable(model.Number))
                         {
-                            db.Weeks.Add(model);
+                            db.Week.Add(model);
                             //MessageBox.Show("تمت الإضافة بنجاح");
                         }
                         else
@@ -108,7 +108,7 @@ namespace STDApp
         {
             using (STDEntities db = new STDEntities())
             {
-                bool Number = db.Weeks.Where(m => m.Number == num).Any();
+                bool Number = db.Week.Where(m => m.Number == num).Any();
 
                 return !Number;
 
@@ -122,7 +122,7 @@ namespace STDApp
                 model.ID = Convert.ToInt32(radGrid.CurrentRow.Cells["ID"].Value);
                 using (STDEntities db = new STDEntities())
                 {
-                    model = db.Weeks.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.Week.Where(x => x.ID == model.ID).FirstOrDefault();
                     txtweeknumber.Text = model.Number;
                     datefrom.Text = model.Start;
                     dateto.Text = model.Finish;
@@ -140,8 +140,8 @@ namespace STDApp
                 {
                     var entry = db.Entry(model);
                     if (entry.State == EntityState.Detached)
-                        db.Weeks.Attach(model);
-                    db.Weeks.Remove(model);
+                        db.Week.Attach(model);
+                    db.Week.Remove(model);
                     try
                     {
                         db.SaveChanges();

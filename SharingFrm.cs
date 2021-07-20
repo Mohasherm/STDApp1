@@ -37,10 +37,10 @@ namespace STDApp
             var x = Convert.ToInt32(radDropweek.SelectedValue);
             var z = Convert.ToInt32(radDropSubject.SelectedValue);
             var v = Convert.ToInt32(radDropDepartment.SelectedValue);
-            dbContext.Sharings.LoadAsync().ContinueWith(loadTask =>
+            dbContext.Sharing.LoadAsync().ContinueWith(loadTask =>
             {
                 // Bind data to control when loading complete
-                sharingBindingSource.DataSource = dbContext.Sharings
+                sharingBindingSource.DataSource = dbContext.Sharing
                           .Where(a => a.Week_Id == x && a.Subject_Id == z && a.Student.Department_Id == v).ToList();
                 //sharingBindingSource.DataSource = (from shar in dbContext.Sharings
                 //     .Where(a => a.Week_Id == x && a.Subject_Id == z && a.Student.Department_Id == v)
@@ -65,7 +65,7 @@ namespace STDApp
         private void SharingFrm_Load(object sender, EventArgs e)
         {
             
-            sharingBindingSource.DataSource = dbContext.Sharings.Where(a => a.Week_Id == -1).ToList();
+            sharingBindingSource.DataSource = dbContext.Sharing.Where(a => a.Week_Id == -1).ToList();
 
             GridViewTextBoxColumn txtstudent = new GridViewTextBoxColumn("StudentName");
             txtstudent.ReadOnly = true;
@@ -106,13 +106,13 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Classes.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>();
                 radDropclasses.SelectedIndex = -1;
 
-                db.Sharings.Load();
+                db.Sharing.Load();
 
                 radDropweek.SelectedIndexChanged -= radDropweek_SelectedIndexChanged;
-                radDropweek.DataSource = db.Weeks.ToList<Week>();
+                radDropweek.DataSource = db.Week.ToList<Week>();
                 radDropweek.ValueMember = "ID";
                 radDropweek.DisplayMember = "Number";
                 radDropweek.SelectedIndex = -1;
@@ -124,18 +124,18 @@ namespace STDApp
 
         private void radDropclasses_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            sharingBindingSource.DataSource = dbContext.Sharings.Where(a => a.Week_Id == -1).ToList();
+            sharingBindingSource.DataSource = dbContext.Sharing.Where(a => a.Week_Id == -1).ToList();
             radGridView1.DataSource = null;
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Departments
+                radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList();
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
-                radDropSubject.DataSource = db.Subjects
+                radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList();
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
@@ -163,11 +163,11 @@ namespace STDApp
 
                 using (STDEntities db = new STDEntities())
                 {
-                    List<int> result = db.Sharings
+                    List<int> result = db.Sharing
                         .Where(a => a.Week_Id == y && a.Subject_Id == z && a.Student.Department_Id == x)
                         .Select(a => a.Student_Id).ToList();
 
-                    radGridView1.DataSource = (from std in db.Students.Where(c => !result.Contains(c.ID))
+                    radGridView1.DataSource = (from std in db.Student.Where(c => !result.Contains(c.ID))
                                                where std.Department_Id == x
                                                select new
                                                {
@@ -212,7 +212,7 @@ namespace STDApp
                             model.Sharing1 = radDropShare.SelectedIndex;
                             model.Subject_Id = (int)radDropSubject.SelectedValue;
                             model.Week_Id = (int)radDropweek.SelectedValue;
-                            db.Sharings.Add(model);
+                            db.Sharing.Add(model);
                             db.SaveChanges();                           
                         }
                     }
@@ -235,8 +235,8 @@ namespace STDApp
             if (MessageBox.Show("هل أنت متأكد من الحذف؟", "حذف", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int ID = (int)radGridView.CurrentRow.Cells["ID"].Value;
-                var result = dbContext.Sharings.Find(ID);
-                dbContext.Sharings.Remove(result);
+                var result = dbContext.Sharing.Find(ID);
+                dbContext.Sharing.Remove(result);
                 dbContext.SaveChanges();
                 Generate();
                 MessageBox.Show("تم الحذف بنجاح");
@@ -250,14 +250,14 @@ namespace STDApp
         private void radGridView_CellValueChanged(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
             int ID = (int)radGridView.CurrentRow.Cells["ID"].Value;
-            var result = (from x in dbContext.Sharings where x.ID == ID select x).FirstOrDefault();
+            var result = (from x in dbContext.Sharing where x.ID == ID select x).FirstOrDefault();
             result.Sharing1 = (int)e.Value;            
             dbContext.SaveChanges();
         }
 
         private void radDropDepartment_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            sharingBindingSource.DataSource = dbContext.Sharings.Where(a => a.Week_Id == -1).ToList();
+            sharingBindingSource.DataSource = dbContext.Sharing.Where(a => a.Week_Id == -1).ToList();
             radGridView1.DataSource = null;
             radDropSubject.SelectedIndex = -1;
             radDropweek.SelectedIndex = -1;
@@ -265,7 +265,7 @@ namespace STDApp
 
         private void radDropSubject_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            sharingBindingSource.DataSource = dbContext.Sharings.Where(a => a.Week_Id == -1).ToList();
+            sharingBindingSource.DataSource = dbContext.Sharing.Where(a => a.Week_Id == -1).ToList();
             radGridView1.DataSource = null;
         }
 

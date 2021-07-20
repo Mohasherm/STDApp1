@@ -23,7 +23,7 @@ namespace STDApp
 
         private void RegTaskFrm_Load(object sender, EventArgs e)
         {
-            registerTaskBindingSource.DataSource = dbContext.RegisterTasks.Where(a => a.Task_Id == -1).ToList();
+            registerTaskBindingSource.DataSource = dbContext.RegisterTask.Where(a => a.Task_Id == -1).ToList();
 
             GridViewTextBoxColumn txtstudent = new GridViewTextBoxColumn("StudentName");
             txtstudent.ReadOnly = true;
@@ -38,10 +38,10 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Classes.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>();
                 radDropclasses.SelectedIndex = -1;
 
-                db.RegisterTests.Load();
+                db.RegisterTest.Load();
 
 
             }
@@ -65,29 +65,29 @@ namespace STDApp
             var x = Convert.ToInt32(radDropTaskTitle.SelectedValue);
             //var z = Convert.ToInt32(radDropSubject.SelectedValue);
             var v = Convert.ToInt32(radDropDepartment.SelectedValue);
-            dbContext.RegisterTests.LoadAsync().ContinueWith(loadTask =>
+            dbContext.RegisterTest.LoadAsync().ContinueWith(loadTask =>
             {
                 // Bind data to control when loading complete
-                registerTaskBindingSource.DataSource = dbContext.RegisterTasks
+                registerTaskBindingSource.DataSource = dbContext.RegisterTask
                           .Where(a => a.Task_Id == x && a.Student.Department_Id == v).ToList();
             }, System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         private void radDropclasses_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            registerTaskBindingSource.DataSource = dbContext.RegisterTasks.Where(a => a.Task_Id == -1).ToList();
+            registerTaskBindingSource.DataSource = dbContext.RegisterTask.Where(a => a.Task_Id == -1).ToList();
             radGridView1.DataSource = null;
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Departments
+                radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList();
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
                 radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
-                radDropSubject.DataSource = db.Subjects
+                radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList();
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
@@ -116,11 +116,11 @@ namespace STDApp
 
                 using (STDEntities db = new STDEntities())
                 {
-                    List<int> result = db.RegisterTasks
+                    List<int> result = db.RegisterTask
                         .Where(a => a.Task_Id == y)
                         .Select(a => a.Student_Id).ToList();
 
-                    radGridView1.DataSource = (from std in db.Students.Where(c => !result.Contains(c.ID))
+                    radGridView1.DataSource = (from std in db.Student.Where(c => !result.Contains(c.ID))
                                                where std.Department_Id == x
                                                select new
                                                {
@@ -170,7 +170,7 @@ namespace STDApp
                             model.Degree = (int)numdegree.Value;
                             model.Attend = chkattend.Checked;
                             model.IsEarly = chkearly.Checked;
-                            db.RegisterTasks.Add(model);
+                            db.RegisterTask.Add(model);
                             db.SaveChanges();
                         }
                     }
@@ -195,8 +195,8 @@ namespace STDApp
             if (MessageBox.Show("هل أنت متأكد من الحذف؟", "حذف", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int ID = (int)radGridView.CurrentRow.Cells["ID"].Value;
-                var result = dbContext.RegisterTasks.Find(ID);
-                dbContext.RegisterTasks.Remove(result);
+                var result = dbContext.RegisterTask.Find(ID);
+                dbContext.RegisterTask.Remove(result);
                 dbContext.SaveChanges();
                 Generate();
                 MessageBox.Show("تم الحذف بنجاح");
@@ -211,7 +211,7 @@ namespace STDApp
         private void radGridView_CellValueChanged(object sender, GridViewCellEventArgs e)
         {
             int ID = (int)radGridView.CurrentRow.Cells["ID"].Value;
-            var result = (from x in dbContext.RegisterTasks where x.ID == ID select x).FirstOrDefault();
+            var result = (from x in dbContext.RegisterTask where x.ID == ID select x).FirstOrDefault();
             switch (e.ColumnIndex)
             {
                 case 1:
@@ -232,7 +232,7 @@ namespace STDApp
 
         private void radDropDepartment_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            registerTaskBindingSource.DataSource = dbContext.RegisterTasks.Where(a => a.Task_Id == -1).ToList();
+            registerTaskBindingSource.DataSource = dbContext.RegisterTask.Where(a => a.Task_Id == -1).ToList();
             radGridView1.DataSource = null;
             radDropTaskTitle.SelectedIndexChanged -= radDropTaskTitle_SelectedIndexChanged;
             radDropTaskTitle.DataSource = null;
@@ -243,7 +243,7 @@ namespace STDApp
 
         private void radDropSubject_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            registerTaskBindingSource.DataSource = dbContext.RegisterTasks.Where(a => a.Task_Id == -1).ToList();
+            registerTaskBindingSource.DataSource = dbContext.RegisterTask.Where(a => a.Task_Id == -1).ToList();
             radGridView1.DataSource = null;
             if (radDropSubject.SelectedIndex != -1)
             {
@@ -252,7 +252,7 @@ namespace STDApp
                 var z = Convert.ToInt32(radDropSubject.SelectedValue);
                 var v = Convert.ToInt32(radDropDepartment.SelectedValue);
                 radDropTaskTitle.SelectedIndexChanged -= radDropTaskTitle_SelectedIndexChanged;
-                radDropTaskTitle.DataSource = dbContext.Tasks.Where(a => a.Department_Id == v && a.Subject_Id == z).ToList<Task>();
+                radDropTaskTitle.DataSource = dbContext.Task.Where(a => a.Department_Id == v && a.Subject_Id == z).ToList<Task>();
                 radDropTaskTitle.SelectedIndex = -1;
                 radDropTaskTitle.SelectedIndexChanged += radDropTaskTitle_SelectedIndexChanged;
             }

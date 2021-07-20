@@ -55,6 +55,7 @@ namespace STDApp
             this.materialPinkTheme1 = new Telerik.WinControls.Themes.MaterialPinkTheme();
             this.telerikMetroBlueTheme1 = new Telerik.WinControls.Themes.TelerikMetroBlueTheme();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
+            this.radMenuItem24 = new Telerik.WinControls.UI.RadMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,7 +104,8 @@ namespace STDApp
             // 
             this.radMenuItem4.Items.AddRange(new Telerik.WinControls.RadItem[] {
             this.radMenuItem13,
-            this.radMenuItem23});
+            this.radMenuItem23,
+            this.radMenuItem24});
             this.radMenuItem4.Name = "radMenuItem4";
             this.radMenuItem4.Text = "الطلاب";
             // 
@@ -232,6 +234,12 @@ namespace STDApp
             this.radMenu1.Size = new System.Drawing.Size(657, 30);
             this.radMenu1.TabIndex = 12;
             // 
+            // radMenuItem24
+            // 
+            this.radMenuItem24.Name = "radMenuItem24";
+            this.radMenuItem24.Text = "ادارة الغياب";
+            this.radMenuItem24.Click += new System.EventHandler(this.radMenuItem24_Click);
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -279,6 +287,7 @@ namespace STDApp
         private Telerik.WinControls.UI.RadMenuItem radMenuItem21;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem22;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem23;
+        private Telerik.WinControls.UI.RadMenuItem radMenuItem24;
     }
 }
 

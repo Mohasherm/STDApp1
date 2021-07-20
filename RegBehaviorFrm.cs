@@ -37,10 +37,10 @@ namespace STDApp
             var x = Convert.ToInt32(radDropweek.SelectedValue);
             var z = Convert.ToInt32(radDropSubject.SelectedValue);
             var v = Convert.ToInt32(radDropDepartment.SelectedValue);
-            dbContext.Behaviors.LoadAsync().ContinueWith(loadTask =>
+            dbContext.Behavior.LoadAsync().ContinueWith(loadTask =>
             {
                 // Bind data to control when loading complete
-                behaviorBindingSource.DataSource = dbContext.Behaviors
+                behaviorBindingSource.DataSource = dbContext.Behavior
                           .Where(a => a.Week_Id == x && a.Subject_Id == z && a.Student.Department_Id == v).ToList();                
             }, System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext());
             
@@ -48,7 +48,7 @@ namespace STDApp
 
         private void RegBehaviorFrm_Load(object sender, EventArgs e)
         {
-            behaviorBindingSource.DataSource = dbContext.Behaviors.Where(a => a.Week_Id == -1).ToList();
+            behaviorBindingSource.DataSource = dbContext.Behavior.Where(a => a.Week_Id == -1).ToList();
 
             GridViewTextBoxColumn txtstudent = new GridViewTextBoxColumn("StudentName");
             txtstudent.ReadOnly = true;
@@ -64,13 +64,13 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Classes.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>();
                 radDropclasses.SelectedIndex = -1;
 
-                db.Behaviors.Load();
+                db.Behavior.Load();
 
                 radDropweek.SelectedIndexChanged -= radDropweek_SelectedIndexChanged;
-                radDropweek.DataSource = db.Weeks.ToList<Week>();
+                radDropweek.DataSource = db.Week.ToList<Week>();
                 radDropweek.ValueMember = "ID";
                 radDropweek.DisplayMember = "Number";
                 radDropweek.SelectedIndex = -1;
@@ -82,18 +82,18 @@ namespace STDApp
 
         private void radDropclasses_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            behaviorBindingSource.DataSource = dbContext.Behaviors.Where(a => a.Week_Id == -1).ToList();
+            behaviorBindingSource.DataSource = dbContext.Behavior.Where(a => a.Week_Id == -1).ToList();
             radGridView1.DataSource = null;
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Departments
+                radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList();
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
-                radDropSubject.DataSource = db.Subjects
+                radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList();
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
@@ -116,11 +116,11 @@ namespace STDApp
 
                 using (STDEntities db = new STDEntities())
                 {
-                    List<int> result = db.Behaviors
+                    List<int> result = db.Behavior
                         .Where(a => a.Week_Id == y && a.Subject_Id == z && a.Student.Department_Id == x)
                         .Select(a => a.Sudent_Id).ToList();
 
-                    radGridView1.DataSource = (from std in db.Students.Where(c => !result.Contains(c.ID))
+                    radGridView1.DataSource = (from std in db.Student.Where(c => !result.Contains(c.ID))
                                                where std.Department_Id == x
                                                select new
                                                {
@@ -172,7 +172,7 @@ namespace STDApp
                             model.Sudent_Id = Convert.ToInt32(data.Cells["ID"].Value);
                             model.Subject_Id = (int)radDropSubject.SelectedValue;
                             model.Week_Id = (int)radDropweek.SelectedValue;
-                            db.Behaviors.Add(model);
+                            db.Behavior.Add(model);
                             db.SaveChanges();
                         }
                     }
@@ -199,8 +199,8 @@ namespace STDApp
             if (MessageBox.Show("هل أنت متأكد من الحذف؟", "حذف", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int ID = (int)radGridView.CurrentRow.Cells["ID"].Value;
-                var result = dbContext.Behaviors.Find(ID);
-                dbContext.Behaviors.Remove(result);
+                var result = dbContext.Behavior.Find(ID);
+                dbContext.Behavior.Remove(result);
                 dbContext.SaveChanges();
                 Generate();
                 MessageBox.Show("تم الحذف بنجاح");
@@ -214,7 +214,7 @@ namespace STDApp
         private void radGridView_CellValueChanged(object sender, Telerik.WinControls.UI.GridViewCellEventArgs e)
         {
             int ID = (int)radGridView.CurrentRow.Cells["ID"].Value;
-            var result = (from x in dbContext.Behaviors where x.ID == ID select x).FirstOrDefault();
+            var result = (from x in dbContext.Behavior where x.ID == ID select x).FirstOrDefault();
             switch (e.ColumnIndex)
             {
                 case 1:
@@ -238,7 +238,7 @@ namespace STDApp
 
         private void radDropDepartment_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            behaviorBindingSource.DataSource = dbContext.Behaviors.Where(a => a.Week_Id == -1).ToList();
+            behaviorBindingSource.DataSource = dbContext.Behavior.Where(a => a.Week_Id == -1).ToList();
             radGridView1.DataSource = null;
             radDropweek.SelectedIndex = -1;
             radDropSubject.SelectedIndex = -1;
@@ -246,7 +246,7 @@ namespace STDApp
 
         private void radDropSubject_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
         {
-            behaviorBindingSource.DataSource = dbContext.Behaviors.Where(a => a.Week_Id == -1).ToList();
+            behaviorBindingSource.DataSource = dbContext.Behavior.Where(a => a.Week_Id == -1).ToList();
             radGridView1.DataSource = null;
             radDropweek.SelectedIndex = -1;
         }

@@ -17,10 +17,10 @@ namespace STDApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Department()
         {
-            this.Duties = new HashSet<Duty>();
-            this.Students = new HashSet<Student>();
-            this.Tasks = new HashSet<Task>();
-            this.Tests = new HashSet<Test>();
+            this.Duty = new HashSet<Duty>();
+            this.Student = new HashSet<Student>();
+            this.Task = new HashSet<Task>();
+            this.Test = new HashSet<Test>();
         }
     
         public int ID { get; set; }
@@ -29,12 +29,12 @@ namespace STDApp
     
         public virtual Class Class { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Duty> Duties { get; set; }
+        public virtual ICollection<Duty> Duty { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Students { get; set; }
+        public virtual ICollection<Student> Student { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Task> Tasks { get; set; }
+        public virtual ICollection<Task> Task { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Test> Tests { get; set; }
+        public virtual ICollection<Test> Test { get; set; }
     }
 }

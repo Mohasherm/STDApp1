@@ -34,8 +34,8 @@ namespace STDApp
             radGrid.AutoGenerateColumns = false;
             using (STDEntities db = new STDEntities())
             {                
-                radGrid.DataSource = (from clas in db.Classes
-                                      join dep in db.Departments on clas.ID equals dep.Class_Id
+                radGrid.DataSource = (from clas in db.Class
+                                      join dep in db.Department on clas.ID equals dep.Class_Id
                                       //where condtion if any                                             
                                       select new
                                       {
@@ -50,7 +50,7 @@ namespace STDApp
             }
             using (STDEntities db = new STDEntities())
             {
-                ClassDropdownlist.DataSource = db.Classes.ToList<Class>();
+                ClassDropdownlist.DataSource = db.Class.ToList<Class>();
                 ClassDropdownlist.ValueMember = "ID";
                 ClassDropdownlist.DisplayMember = "Name";
                 ClassDropdownlist.SelectedIndex = -1;
@@ -89,7 +89,7 @@ namespace STDApp
                     {
                         if (IsDepartmentAvailable(model.Name,model.Class_Id))
                         {
-                            db.Departments.Add(model);
+                            db.Department.Add(model);
                             //MessageBox.Show("تمت الإضافة بنجاح");
                         }
                         else
@@ -121,7 +121,7 @@ namespace STDApp
         {
             using (STDEntities db = new STDEntities())
             {
-                bool Department = db.Departments.Where(m => m.Class_Id == id).Where(x => x.Name == name).Any();
+                bool Department = db.Department.Where(m => m.Class_Id == id).Where(x => x.Name == name).Any();
 
                 return !Department;
 
@@ -135,8 +135,8 @@ namespace STDApp
                 {
                     var entry = db.Entry(model);
                     if (entry.State == EntityState.Detached)
-                        db.Departments.Attach(model);
-                    db.Departments.Remove(model);
+                        db.Department.Attach(model);
+                    db.Department.Remove(model);
                     try
                     {
                         db.SaveChanges();
@@ -164,7 +164,7 @@ namespace STDApp
                 model.ID = Convert.ToInt32(radGrid.CurrentRow.Cells["ID"].Value);
                 using (STDEntities db = new STDEntities())
                 {
-                    model = db.Departments.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.Department.Where(x => x.ID == model.ID).FirstOrDefault();
                     txtdepartment.Text = model.Name;
                     ClassDropdownlist.SelectedValue = model.Class_Id;
                 }

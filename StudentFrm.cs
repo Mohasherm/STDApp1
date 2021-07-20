@@ -35,9 +35,9 @@ namespace STDApp
             radGrid.AutoGenerateColumns = false;
             using (STDEntities db = new STDEntities())
             {
-                radGrid.DataSource = (from std in db.Students
-                                      join dep in db.Departments on std.Department_Id equals dep.ID
-                                      join clas in db.Classes on dep.Class_Id equals clas.ID
+                radGrid.DataSource = (from std in db.Student
+                                      join dep in db.Department on std.Department_Id equals dep.ID
+                                      join clas in db.Class on dep.Class_Id equals clas.ID
                                       //where condtion if any                                             
                                       select new
                                       {
@@ -59,7 +59,7 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Classes.ToList<Class>();               
+                radDropclasses.DataSource = db.Class.ToList<Class>();               
                 radDropclasses.SelectedIndex = -1;
             }       
 
@@ -143,7 +143,7 @@ namespace STDApp
                     {
                         if (IsNameAvailable(model.Name))
                         {
-                            db.Students.Add(model);
+                            db.Student.Add(model);
                             //MessageBox.Show("تمت الإضافة بنجاح");
                         }
                         else
@@ -175,7 +175,7 @@ namespace STDApp
         {
             using (STDEntities db = new STDEntities())
             {
-                bool Number = db.Students.Where(m => m.Name == name).Any();
+                bool Number = db.Student.Where(m => m.Name == name).Any();
 
                 return !Number;
 
@@ -188,7 +188,7 @@ namespace STDApp
                using (STDEntities db = new STDEntities())
                 {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Departments
+                radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList();
                     radDropDepartment.ValueMember = "ID";
                     radDropDepartment.DisplayMember = "Name";
@@ -205,8 +205,8 @@ namespace STDApp
                 {
                     var entry = db.Entry(model);
                     if (entry.State == EntityState.Detached)
-                        db.Students.Attach(model);
-                    db.Students.Remove(model);
+                        db.Student.Attach(model);
+                    db.Student.Remove(model);
                     try
                     {
                         db.SaveChanges();
@@ -234,7 +234,7 @@ namespace STDApp
                 model.ID = Convert.ToInt32(radGrid.CurrentRow.Cells["ID"].Value);
                 using (STDEntities db = new STDEntities())
                 {
-                    model = db.Students.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.Student.Where(x => x.ID == model.ID).FirstOrDefault();
                     txtname.Text = model.Name;
                     txtmobile.Text = model.Mobile;
                     txtcivilnumber.Text = model.CivilNumber;

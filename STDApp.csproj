@@ -125,6 +125,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Absence.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="AbsenceFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,7 +254,7 @@
     <Compile Include="SubjectFrm.Designer.cs">
       <DependentUpon>SubjectFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
+    <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Task.cs">
@@ -347,6 +350,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Absence.datasource" />
     <None Include="Properties\DataSources\Behavior.datasource" />
     <None Include="Properties\DataSources\Duty.datasource" />
     <None Include="Properties\DataSources\RegisterTask1.datasource" />

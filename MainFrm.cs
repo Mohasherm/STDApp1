@@ -149,6 +149,12 @@ namespace STDApp
             config.Save();
             ConfigurationManager.RefreshSection("connectionStrings");
         }
+
+        private void radMenuItem24_Click(object sender, EventArgs e)
+        {
+            AbsenceFrm absence = new AbsenceFrm();
+            absence.ShowDialog();
+        }
     }
 }
 

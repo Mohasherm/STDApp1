@@ -78,9 +78,9 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Classes.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>();
                 radDropclasses.SelectedIndex = -1;
-                db.RegisterTests.Load();
+                db.RegisterTest.Load();
             }
             clear();
         }
@@ -105,7 +105,7 @@ namespace STDApp
             var x = Convert.ToInt32(radDropDuty.SelectedValue);
             //var z = Convert.ToInt32(radDropSubject.SelectedValue);
             var v = Convert.ToInt32(radDropDepartment.SelectedValue);
-            dbContext.RegisterTests.LoadAsync().ContinueWith(loadTask =>
+            dbContext.RegisterTest.LoadAsync().ContinueWith(loadTask =>
             {
                 // Bind data to control when loading complete
                 studentDutyBindingSource.DataSource = dbContext.Student_Duty
@@ -120,14 +120,14 @@ namespace STDApp
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Departments
+                radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList();
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
                 radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
-                radDropSubject.DataSource = db.Subjects
+                radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList();
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
@@ -155,7 +155,7 @@ namespace STDApp
                         .Where(a => a.Duty_Id == y)
                         .Select(a => a.Student_Id).ToList();
 
-                    radGridView1.DataSource = (from std in db.Students.Where(c => !result.Contains(c.ID))
+                    radGridView1.DataSource = (from std in db.Student.Where(c => !result.Contains(c.ID))
                                                where std.Department_Id == x
                                                select new
                                                {
@@ -306,7 +306,7 @@ namespace STDApp
                 radDropDuty.DisplayMember = "Name";
                 var z = Convert.ToInt32(radDropSubject.SelectedValue);
                 var v = Convert.ToInt32(radDropDepartment.SelectedValue);
-                radDropDuty.DataSource = dbContext.Duties.Where(a => a.Department_Id == v && a.Subject_Id == z).ToList<Duty>();
+                radDropDuty.DataSource = dbContext.Duty.Where(a => a.Department_Id == v && a.Subject_Id == z).ToList<Duty>();
                
                 radDropDuty.SelectedIndex = -1;
             }

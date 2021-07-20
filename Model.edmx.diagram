@@ -4,21 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="10164c77b9c442c0b9457cfd0ef00546" Name="Diagram1">
-        <EntityTypeShape EntityType="STDModel.Behavior" Width="1.5" PointX="7.5" PointY="15.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Class" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Department" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Duty" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.RegisterTask" Width="1.5" PointX="10.5" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.RegisterTest" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Sharing" Width="1.5" PointX="7.5" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Student" Width="1.5" PointX="5.25" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Student_Duty" Width="1.5" PointX="10.5" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Subject" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Task" Width="1.5" PointX="10.25" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Test" Width="1.5" PointX="10.25" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="STDModel.Week" Width="1.5" PointX="5.25" PointY="20.375" IsExpanded="true" />
+      <Diagram DiagramId="be16019e0ef94c698e2334d791ffa815" Name="Diagram1">
+        <EntityTypeShape EntityType="STDModel.Absence" Width="1.5" PointX="7.5" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Behavior" Width="1.5" PointX="10.5" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Class" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Department" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Duty" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.RegisterTask" Width="1.5" PointX="7.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.RegisterTest" Width="1.5" PointX="7.5" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Sharing" Width="1.5" PointX="10.5" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Student" Width="1.5" PointX="5.25" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Student_Duty" Width="1.5" PointX="10.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Subject" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Task" Width="1.5" PointX="8.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Test" Width="1.5" PointX="5.25" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="STDModel.Week" Width="1.5" PointX="8.25" PointY="26.125" IsExpanded="true" />
+        <AssociationConnector Association="STDModel.FK_Absence_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="STDModel.FK_Absence_Subject" ManuallyRouted="false" />
         <AssociationConnector Association="STDModel.FK_Behavior_Student" ManuallyRouted="false" />
         <AssociationConnector Association="STDModel.FK_Behavior_Subject" ManuallyRouted="false" />
         <AssociationConnector Association="STDModel.FK_Behavior_Week" ManuallyRouted="false" />

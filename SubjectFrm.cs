@@ -33,8 +33,8 @@ namespace STDApp
             radGrid.AutoGenerateColumns = false;
             using (STDEntities db = new STDEntities())
             {
-                radGrid.DataSource = (from clas in db.Classes
-                                      join sub in db.Subjects on clas.ID equals sub.Class_Id
+                radGrid.DataSource = (from clas in db.Class
+                                      join sub in db.Subject on clas.ID equals sub.Class_Id
                                       //where condtion if any                                             
                                       select new
                                       {
@@ -49,7 +49,7 @@ namespace STDApp
             }
             using (STDEntities db = new STDEntities())
             {
-                ClassDropdownlist.DataSource = db.Classes.ToList<Class>();
+                ClassDropdownlist.DataSource = db.Class.ToList<Class>();
                 ClassDropdownlist.ValueMember = "ID";
                 ClassDropdownlist.DisplayMember = "Name";
                 ClassDropdownlist.SelectedIndex = -1;
@@ -89,7 +89,7 @@ namespace STDApp
                     {
                         if (IsSubjectAvailable(model.Name, model.Class_Id))
                         {
-                            db.Subjects.Add(model);
+                            db.Subject.Add(model);
                             //MessageBox.Show("تمت الإضافة بنجاح");
                         }
                         else
@@ -120,7 +120,7 @@ namespace STDApp
         {
             using (STDEntities db = new STDEntities())
             {
-                bool Subject = db.Subjects.Where(m => m.Class_Id == id).Where(x => x.Name == name).Any();
+                bool Subject = db.Subject.Where(m => m.Class_Id == id).Where(x => x.Name == name).Any();
 
                 return !Subject;
 
@@ -135,8 +135,8 @@ namespace STDApp
                 {
                     var entry = db.Entry(model);
                     if (entry.State == EntityState.Detached)
-                        db.Subjects.Attach(model);
-                    db.Subjects.Remove(model);
+                        db.Subject.Attach(model);
+                    db.Subject.Remove(model);
                     try
                     {
                         db.SaveChanges();
@@ -163,7 +163,7 @@ namespace STDApp
                 model.ID = Convert.ToInt32(radGrid.CurrentRow.Cells["ID"].Value);
                 using (STDEntities db = new STDEntities())
                 {
-                    model = db.Subjects.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.Subject.Where(x => x.ID == model.ID).FirstOrDefault();
                     txtsubject.Text = model.Name;
                     ClassDropdownlist.SelectedValue = model.Class_Id;
                 }

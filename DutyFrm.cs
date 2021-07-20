@@ -38,10 +38,10 @@ namespace STDApp
             radGrid.AutoGenerateColumns = false;
             using (STDEntities db = new STDEntities())
             {
-                radGrid.DataSource = (from duty in db.Duties
-                                      join dep in db.Departments on duty.Department_Id equals dep.ID
-                                      join clas in db.Classes on dep.Class_Id equals clas.ID
-                                      join sub in db.Subjects on duty.Subject_Id equals sub.ID
+                radGrid.DataSource = (from duty in db.Duty
+                                      join dep in db.Department on duty.Department_Id equals dep.ID
+                                      join clas in db.Class on dep.Class_Id equals clas.ID
+                                      join sub in db.Subject on duty.Subject_Id equals sub.ID
                                       //where condtion if any                                             
                                       select new
                                       {
@@ -65,7 +65,7 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Classes.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>();
                 radDropclasses.SelectedIndex = -1;
             }
 
@@ -100,13 +100,13 @@ namespace STDApp
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Departments
+                radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList();
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
-                radDropSubject.DataSource = db.Subjects
+                radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList();
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
@@ -144,8 +144,8 @@ namespace STDApp
             {
                 using (STDEntities db = new STDEntities())
                 {
-                    int i = db.Duties.Max(a => a.ID);
-                    var result = db.Duties.Find(i);
+                    int i = db.Duty.Max(a => a.ID);
+                    var result = db.Duty.Find(i);
                     model.Number = (Convert.ToInt32(result.Number) + 1).ToString();
 
                 }
@@ -161,7 +161,7 @@ namespace STDApp
                     {
                         if (IsDutyAvailable(model.Number , model.Department_Id))
                         {
-                            db.Duties.Add(model);
+                            db.Duty.Add(model);
                             //MessageBox.Show("تمت الإضافة بنجاح");
                         }
                         else
@@ -193,7 +193,7 @@ namespace STDApp
         {
             using (STDEntities db = new STDEntities())
             {
-                bool duty = db.Duties.Where(m => m.Department_Id == id).Where(x => x.Number == num).Any();
+                bool duty = db.Duty.Where(m => m.Department_Id == id).Where(x => x.Number == num).Any();
 
                 return !duty;
 
@@ -207,8 +207,8 @@ namespace STDApp
                 {
                     var entry = db.Entry(model);
                     if (entry.State == EntityState.Detached)
-                        db.Duties.Attach(model);
-                    db.Duties.Remove(model);
+                        db.Duty.Attach(model);
+                    db.Duty.Remove(model);
                     try
                     {
                         db.SaveChanges();
@@ -235,7 +235,7 @@ namespace STDApp
                 model.ID = Convert.ToInt32(radGrid.CurrentRow.Cells["ID"].Value);
                 using (STDEntities db = new STDEntities())
                 {
-                    model = db.Duties.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.Duty.Where(x => x.ID == model.ID).FirstOrDefault();
                     txtduty.Text = model.Name;
                     //txtDutyNumber.Text = model.Number;
                     datedutyfinal.Text = model.Expire;

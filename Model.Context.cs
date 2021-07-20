@@ -25,19 +25,20 @@ namespace STDApp
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Behavior> Behaviors { get; set; }
-        public virtual DbSet<Class> Classes { get; set; }
-        public virtual DbSet<Department> Departments { get; set; }
-        public virtual DbSet<Duty> Duties { get; set; }
-        public virtual DbSet<RegisterTask> RegisterTasks { get; set; }
-        public virtual DbSet<RegisterTest> RegisterTests { get; set; }
-        public virtual DbSet<Sharing> Sharings { get; set; }
-        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<Absence> Absence { get; set; }
+        public virtual DbSet<Behavior> Behavior { get; set; }
+        public virtual DbSet<Class> Class { get; set; }
+        public virtual DbSet<Department> Department { get; set; }
+        public virtual DbSet<Duty> Duty { get; set; }
+        public virtual DbSet<RegisterTask> RegisterTask { get; set; }
+        public virtual DbSet<RegisterTest> RegisterTest { get; set; }
+        public virtual DbSet<Sharing> Sharing { get; set; }
+        public virtual DbSet<Student> Student { get; set; }
         public virtual DbSet<Student_Duty> Student_Duty { get; set; }
-        public virtual DbSet<Subject> Subjects { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<Task> Tasks { get; set; }
-        public virtual DbSet<Test> Tests { get; set; }
-        public virtual DbSet<Week> Weeks { get; set; }
+        public virtual DbSet<Subject> Subject { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Task> Task { get; set; }
+        public virtual DbSet<Test> Test { get; set; }
+        public virtual DbSet<Week> Week { get; set; }
     }
 }

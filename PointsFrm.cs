@@ -34,7 +34,7 @@ namespace STDApp
             var x = Convert.ToInt32(radDropDepartment.SelectedValue);
             radDropDepartment.SelectedIndexChanged += radDropDepartment_SelectedIndexChanged;
             radGridView1.AutoGenerateColumns = false;
-            radGridView1.DataSource = (from std in dbContext.Students
+            radGridView1.DataSource = (from std in dbContext.Student
                                        where std.Department_Id == x
                                        select new
                                        {
@@ -46,15 +46,15 @@ namespace STDApp
         }
         private void PointsFrm_Load(object sender, EventArgs e)
         {
-            radGridView1.DataSource = dbContext.Students.Where(a => a.Department_Id == -1).ToList();
-            dbContext.Weeks.Load();
-            weekBindingSource.DataSource = dbContext.Weeks.Local.ToBindingList();
+            radGridView1.DataSource = dbContext.Student.Where(a => a.Department_Id == -1).ToList();
+            dbContext.Week.Load();
+            weekBindingSource.DataSource = dbContext.Week.Local.ToBindingList();
             lstweek.DataSource = weekBindingSource;
             using (STDEntities db = new STDEntities())
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Classes.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>();
                 radDropclasses.SelectedIndex = -1;
             }
             model.ID = 0;
@@ -72,7 +72,7 @@ namespace STDApp
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Departments
+                radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList();
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
@@ -98,7 +98,7 @@ namespace STDApp
                 if (msg == "")
                 {
                     var x = Convert.ToInt32(radDropDepartment.SelectedValue);
-                    var std = dbContext.Students.Where(a => a.Department_Id == x).ToList();
+                    var std = dbContext.Student.Where(a => a.Department_Id == x).ToList();
                     foreach (var data in std)
                     {
                         model.ID = data.ID;
@@ -140,7 +140,7 @@ namespace STDApp
             foreach (var data in std)
             {
                 model.ID = data.ID;
-                model.Points = dbContext.RegisterTests.Where(a => a.Student_Id == data.ID).Select(a => a.Degree).FirstOrDefault();
+                model.Points = dbContext.RegisterTest.Where(a => a.Student_Id == data.ID).Select(a => a.Degree).FirstOrDefault();
                
                 model.CivilNumber = data.CivilNumber;
                 model.Department_Id = data.Department_Id;
@@ -178,7 +178,7 @@ namespace STDApp
                         model.ID = item.Student_Id;
                         using (STDEntities db = new STDEntities())
                         {
-                            int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                            int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                             model.Points = 10 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
@@ -190,7 +190,7 @@ namespace STDApp
                         model.ID = item.Student_Id;
                         using (STDEntities db = new STDEntities())
                         {
-                            int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                            int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                             model.Points = 5 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
@@ -201,7 +201,7 @@ namespace STDApp
                         model.ID = item.Student_Id;
                         using (STDEntities db = new STDEntities())
                         {
-                            int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                            int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                             model.Points = 5 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
@@ -212,7 +212,7 @@ namespace STDApp
                         model.ID = item.Student_Id;
                         using (STDEntities db = new STDEntities())
                         {
-                            int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                            int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                             model.Points = 8 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
@@ -223,7 +223,7 @@ namespace STDApp
                         model.ID = item.Student_Id;
                         using (STDEntities db = new STDEntities())
                         {
-                            int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                            int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                             model.Points = 10 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
@@ -234,7 +234,7 @@ namespace STDApp
                         model.ID = item.Student_Id;
                         using (STDEntities db = new STDEntities())
                         {
-                            int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                            int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                             model.Points = 5 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
@@ -245,7 +245,7 @@ namespace STDApp
                         model.ID = item.Student_Id;
                         using (STDEntities db = new STDEntities())
                         {
-                            int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                            int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                             model.Points = 8 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
@@ -256,7 +256,7 @@ namespace STDApp
                         model.ID = item.Student_Id;
                         using (STDEntities db = new STDEntities())
                         {
-                            int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                            int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                             model.Points = 10 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
@@ -274,7 +274,7 @@ namespace STDApp
             {
                 foreach (var item in lstweek.SelectedItems)
                 {
-                    lst.Add(dbContext.Sharings.Where(a => a.Student_Id == data.ID && a.Week_Id == (int)item.Value).FirstOrDefault());
+                    lst.Add(dbContext.Sharing.Where(a => a.Student_Id == data.ID && a.Week_Id == (int)item.Value).FirstOrDefault());
                 }
             }
            
@@ -287,7 +287,7 @@ namespace STDApp
                     model.ID = item.Student_Id;
                     using (STDEntities db = new STDEntities())
                     {
-                        int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                        int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                         model.Points = 5 + i;
                     }
                 }
@@ -296,7 +296,7 @@ namespace STDApp
                     model.ID = item.Student_Id;
                     using (STDEntities db = new STDEntities())
                     {
-                        int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                        int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                         model.Points = 8 + i;
                     }
                 }
@@ -305,7 +305,7 @@ namespace STDApp
                     model.ID = item.Student_Id;
                     using (STDEntities db = new STDEntities())
                     {
-                        int i = db.Students.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                        int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
                         model.Points = 10 + i;
                     }
                 }
@@ -331,13 +331,13 @@ namespace STDApp
             foreach (var data in std)
             {
                 model.ID = data.ID;
-                int y=dbContext.RegisterTasks.Where(a => a.Student_Id == data.ID).Select(a => a.Degree).FirstOrDefault();
-                var x = dbContext.RegisterTasks.Where(a => a.Student_Id == data.ID).Select(a => a.IsEarly).FirstOrDefault();
+                int y=dbContext.RegisterTask.Where(a => a.Student_Id == data.ID).Select(a => a.Degree).FirstOrDefault();
+                var x = dbContext.RegisterTask.Where(a => a.Student_Id == data.ID).Select(a => a.IsEarly).FirstOrDefault();
                 if (x)
                 {                  
                     using (STDEntities db = new STDEntities())
                     {
-                        int i = db.Students.Where(a => a.ID == data.ID).Select(a => a.Points).FirstOrDefault();
+                        int i = db.Student.Where(a => a.ID == data.ID).Select(a => a.Points).FirstOrDefault();
                         model.Points = 5 + i + y;
                     }
                 }
@@ -360,7 +360,7 @@ namespace STDApp
             {
                 foreach (var item in lstweek.SelectedItems)
                 {
-                    lst.Add(dbContext.Behaviors.Where(a => a.Sudent_Id == data.ID && a.Week_Id == (int)item.Value).FirstOrDefault());
+                    lst.Add(dbContext.Behavior.Where(a => a.Sudent_Id == data.ID && a.Week_Id == (int)item.Value).FirstOrDefault());
                 }
             }
             if (lst.Count != 0)
@@ -373,7 +373,7 @@ namespace STDApp
 
                         using (STDEntities db = new STDEntities())
                         {
-                            int i = db.Students.Where(a => a.ID == item.Student.ID).Select(a => a.Points).FirstOrDefault();
+                            int i = db.Student.Where(a => a.ID == item.Student.ID).Select(a => a.Points).FirstOrDefault();
                             model.Points = (item.Ok * 2) + i;
                         }
                         model.CivilNumber = item.Student.CivilNumber;

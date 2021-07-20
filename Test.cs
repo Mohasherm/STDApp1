@@ -17,7 +17,7 @@ namespace STDApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Test()
         {
-            this.RegisterTests = new HashSet<RegisterTest>();
+            this.RegisterTest = new HashSet<RegisterTest>();
         }
     
         public int ID { get; set; }
@@ -29,7 +29,7 @@ namespace STDApp
     
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RegisterTest> RegisterTests { get; set; }
+        public virtual ICollection<RegisterTest> RegisterTest { get; set; }
         public virtual Subject Subject { get; set; }
     }
 }

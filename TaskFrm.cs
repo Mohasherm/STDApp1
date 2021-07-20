@@ -40,10 +40,10 @@ namespace STDApp
             radGrid.AutoGenerateColumns = false;
             using (STDEntities db = new STDEntities())
             {
-                radGrid.DataSource = (from task in db.Tasks
-                                      join dep in db.Departments on task.Department_Id equals dep.ID
-                                      join clas in db.Classes on dep.Class_Id equals clas.ID
-                                      join sub in db.Subjects on task.Subject_Id equals sub.ID
+                radGrid.DataSource = (from task in db.Task
+                                      join dep in db.Department on task.Department_Id equals dep.ID
+                                      join clas in db.Class on dep.Class_Id equals clas.ID
+                                      join sub in db.Subject on task.Subject_Id equals sub.ID
                                       //where condtion if any                                             
                                       select new
                                       {
@@ -67,7 +67,7 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Classes.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>();
                 radDropclasses.SelectedIndex = -1;
             }
 
@@ -89,13 +89,13 @@ namespace STDApp
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Departments
+                radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList();
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
-                radDropSubject.DataSource = db.Subjects
+                radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList();
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
@@ -136,7 +136,7 @@ namespace STDApp
                 {
                     if (model.ID == 0)
                     {
-                        db.Tasks.Add(model);
+                        db.Task.Add(model);
                         //MessageBox.Show("تمت الإضافة بنجاح");
                     }
                     else
@@ -165,8 +165,8 @@ namespace STDApp
                 {
                     var entry = db.Entry(model);
                     if (entry.State == EntityState.Detached)
-                        db.Tasks.Attach(model);
-                    db.Tasks.Remove(model);
+                        db.Task.Attach(model);
+                    db.Task.Remove(model);
                     try
                     {
                         db.SaveChanges();
@@ -192,7 +192,7 @@ namespace STDApp
                 model.ID = Convert.ToInt32(radGrid.CurrentRow.Cells["ID"].Value);
                 using (STDEntities db = new STDEntities())
                 {
-                    model = db.Tasks.Where(x => x.ID == model.ID).FirstOrDefault();
+                    model = db.Task.Where(x => x.ID == model.ID).FirstOrDefault();
                     txttask.Text = model.Title;
                    datefrom.Text = model.Start;
                     dateto.Text = model.Finish;

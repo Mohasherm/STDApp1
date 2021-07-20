@@ -17,10 +17,11 @@ namespace STDApp
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Student()
         {
-            this.Behaviors = new HashSet<Behavior>();
-            this.RegisterTasks = new HashSet<RegisterTask>();
-            this.RegisterTests = new HashSet<RegisterTest>();
-            this.Sharings = new HashSet<Sharing>();
+            this.Absence = new HashSet<Absence>();
+            this.Behavior = new HashSet<Behavior>();
+            this.RegisterTask = new HashSet<RegisterTask>();
+            this.RegisterTest = new HashSet<RegisterTest>();
+            this.Sharing = new HashSet<Sharing>();
             this.Student_Duty = new HashSet<Student_Duty>();
         }
     
@@ -32,14 +33,16 @@ namespace STDApp
         public int Department_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Behavior> Behaviors { get; set; }
+        public virtual ICollection<Absence> Absence { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Behavior> Behavior { get; set; }
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RegisterTask> RegisterTasks { get; set; }
+        public virtual ICollection<RegisterTask> RegisterTask { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RegisterTest> RegisterTests { get; set; }
+        public virtual ICollection<RegisterTest> RegisterTest { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sharing> Sharings { get; set; }
+        public virtual ICollection<Sharing> Sharing { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student_Duty> Student_Duty { get; set; }
     }
