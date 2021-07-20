@@ -1,0 +1,1233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="STDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Behavior">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ok" Type="int" Nullable="false" />
+          <Property Name="Bad" Type="int" Nullable="false" />
+          <Property Name="Sleep" Type="int" Nullable="false" />
+          <Property Name="GetBook" Type="int" Nullable="false" />
+          <Property Name="Sudent_Id" Type="int" Nullable="false" />
+          <Property Name="Subject_Id" Type="int" Nullable="false" />
+          <Property Name="Week_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Class_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Duty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Expire" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Subject_Id" Type="int" Nullable="false" />
+          <Property Name="Department_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegisterTask">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Attend" Type="bit" Nullable="false" />
+          <Property Name="Degree" Type="int" Nullable="false" />
+          <Property Name="Student_Id" Type="int" Nullable="false" />
+          <Property Name="Task_Id" Type="int" Nullable="false" />
+          <Property Name="IsEarly" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegisterTest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Degree" Type="int" Nullable="false" />
+          <Property Name="Attend" Type="bit" Nullable="false" />
+          <Property Name="IsEarly" Type="bit" Nullable="false" />
+          <Property Name="Student_Id" Type="int" Nullable="false" />
+          <Property Name="Test_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sharing">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sharing" Type="int" Nullable="false" />
+          <Property Name="Student_Id" Type="int" Nullable="false" />
+          <Property Name="Subject_Id" Type="int" Nullable="false" />
+          <Property Name="Week_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="25" />
+          <Property Name="CivilNumber" Type="nvarchar" MaxLength="25" />
+          <Property Name="Points" Type="int" Nullable="false" />
+          <Property Name="Department_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student_Duty">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+            <PropertyRef Name="Duty_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="int" Nullable="false" />
+          <Property Name="Duty_Id" Type="int" Nullable="false" />
+          <Property Name="IsSolved" Type="bit" Nullable="false" />
+          <Property Name="Memorized" Type="int" />
+          <Property Name="Reading" Type="int" />
+          <Property Name="Note" Type="nvarchar(max)" />
+          <Property Name="IsEarly" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Class_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Start" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Finish" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Department_Id" Type="int" Nullable="false" />
+          <Property Name="Subject_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TimePeriod" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FinalDate" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Test" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Department_Id" Type="int" Nullable="false" />
+          <Property Name="Subject_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Week">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Start" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Finish" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Behavior_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Behavior" Type="Self.Behavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Behavior">
+              <PropertyRef Name="Sudent_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Behavior_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Behavior" Type="Self.Behavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Behavior">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Behavior_Week">
+          <End Role="Week" Type="Self.Week" Multiplicity="1" />
+          <End Role="Behavior" Type="Self.Behavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Week">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Behavior">
+              <PropertyRef Name="Week_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Class_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Duty_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Duty_Subject1">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisterTask_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="RegisterTask" Type="Self.RegisterTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisterTask">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisterTask_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="RegisterTask" Type="Self.RegisterTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisterTask">
+              <PropertyRef Name="Task_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisterTest_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="RegisterTest" Type="Self.RegisterTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisterTest">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisterTest_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="RegisterTest" Type="Self.RegisterTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisterTest">
+              <PropertyRef Name="Test_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Sharing" Type="Self.Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Sharing" Type="Self.Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Week">
+          <End Role="Week" Type="Self.Week" Multiplicity="1" />
+          <End Role="Sharing" Type="Self.Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Week">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="Week_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Duty_Duty">
+          <End Role="Duty" Type="Self.Duty" Multiplicity="1" />
+          <End Role="Student_Duty" Type="Self.Student_Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Duty">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student_Duty">
+              <PropertyRef Name="Duty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Duty_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Student_Duty" Type="Self.Student_Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student_Duty">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_Class1">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="Class_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STDModelStoreContainer">
+          <EntitySet Name="Behavior" EntityType="Self.Behavior" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Duty" EntityType="Self.Duty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterTask" EntityType="Self.RegisterTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisterTest" EntityType="Self.RegisterTest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sharing" EntityType="Self.Sharing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student_Duty" EntityType="Self.Student_Duty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Week" EntityType="Self.Week" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Behavior_Student" Association="Self.FK_Behavior_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Behavior" EntitySet="Behavior" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Behavior_Subject" Association="Self.FK_Behavior_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Behavior" EntitySet="Behavior" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Behavior_Week" Association="Self.FK_Behavior_Week">
+            <End Role="Week" EntitySet="Week" />
+            <End Role="Behavior" EntitySet="Behavior" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Class" Association="Self.FK_Department_Class">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Duty_Department" Association="Self.FK_Duty_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Duty_Subject1" Association="Self.FK_Duty_Subject1">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Duty" EntitySet="Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisterTask_Student" Association="Self.FK_RegisterTask_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="RegisterTask" EntitySet="RegisterTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisterTask_Task" Association="Self.FK_RegisterTask_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="RegisterTask" EntitySet="RegisterTask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisterTest_Student" Association="Self.FK_RegisterTest_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="RegisterTest" EntitySet="RegisterTest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisterTest_Test" Association="Self.FK_RegisterTest_Test">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="RegisterTest" EntitySet="RegisterTest" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Student" Association="Self.FK_Sharing_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Sharing" EntitySet="Sharing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Subject" Association="Self.FK_Sharing_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Sharing" EntitySet="Sharing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Week" Association="Self.FK_Sharing_Week">
+            <End Role="Week" EntitySet="Week" />
+            <End Role="Sharing" EntitySet="Sharing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Department" Association="Self.FK_Student_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Duty_Duty" Association="Self.FK_Student_Duty_Duty">
+            <End Role="Duty" EntitySet="Duty" />
+            <End Role="Student_Duty" EntitySet="Student_Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Duty_Student" Association="Self.FK_Student_Duty_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Student_Duty" EntitySet="Student_Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Class1" Association="Self.FK_Subject_Class1">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Subject" EntitySet="Subject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Department" Association="Self.FK_Task_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Subject" Association="Self.FK_Task_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Department" Association="Self.FK_Test_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Subject" Association="Self.FK_Test_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="STDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Behavior">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ok" Type="Int32" Nullable="false" />
+          <Property Name="Bad" Type="Int32" Nullable="false" />
+          <Property Name="Sleep" Type="Int32" Nullable="false" />
+          <Property Name="GetBook" Type="Int32" Nullable="false" />
+          <Property Name="Sudent_Id" Type="Int32" Nullable="false" />
+          <Property Name="Subject_Id" Type="Int32" Nullable="false" />
+          <Property Name="Week_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Behavior_Student" FromRole="Behavior" ToRole="Student" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Behavior_Subject" FromRole="Behavior" ToRole="Subject" />
+          <NavigationProperty Name="Week" Relationship="Self.FK_Behavior_Week" FromRole="Behavior" ToRole="Week" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Departments" Relationship="Self.FK_Department_Class" FromRole="Class" ToRole="Department" />
+          <NavigationProperty Name="Subjects" Relationship="Self.FK_Subject_Class1" FromRole="Class" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Class_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Department_Class" FromRole="Department" ToRole="Class" />
+          <NavigationProperty Name="Duties" Relationship="Self.FK_Duty_Department" FromRole="Department" ToRole="Duty" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_Department" FromRole="Department" ToRole="Student" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Department" FromRole="Department" ToRole="Task" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK_Test_Department" FromRole="Department" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Duty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Number" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Expire" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Subject_Id" Type="Int32" Nullable="false" />
+          <Property Name="Department_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Duty_Department" FromRole="Duty" ToRole="Department" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Duty_Subject1" FromRole="Duty" ToRole="Subject" />
+          <NavigationProperty Name="Student_Duty" Relationship="Self.FK_Student_Duty_Duty" FromRole="Duty" ToRole="Student_Duty" />
+        </EntityType>
+        <EntityType Name="RegisterTask">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Attend" Type="Boolean" Nullable="false" />
+          <Property Name="Degree" Type="Int32" Nullable="false" />
+          <Property Name="Student_Id" Type="Int32" Nullable="false" />
+          <Property Name="Task_Id" Type="Int32" Nullable="false" />
+          <Property Name="IsEarly" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_RegisterTask_Student" FromRole="RegisterTask" ToRole="Student" />
+          <NavigationProperty Name="Task" Relationship="Self.FK_RegisterTask_Task" FromRole="RegisterTask" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="RegisterTest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Degree" Type="Int32" Nullable="false" />
+          <Property Name="Attend" Type="Boolean" Nullable="false" />
+          <Property Name="IsEarly" Type="Boolean" Nullable="false" />
+          <Property Name="Student_Id" Type="Int32" Nullable="false" />
+          <Property Name="Test_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_RegisterTest_Student" FromRole="RegisterTest" ToRole="Student" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_RegisterTest_Test" FromRole="RegisterTest" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Sharing">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sharing1" Type="Int32" Nullable="false" />
+          <Property Name="Student_Id" Type="Int32" Nullable="false" />
+          <Property Name="Subject_Id" Type="Int32" Nullable="false" />
+          <Property Name="Week_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Sharing_Student" FromRole="Sharing" ToRole="Student" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Sharing_Subject" FromRole="Sharing" ToRole="Subject" />
+          <NavigationProperty Name="Week" Relationship="Self.FK_Sharing_Week" FromRole="Sharing" ToRole="Week" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CivilNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Points" Type="Int32" Nullable="false" />
+          <Property Name="Department_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Behaviors" Relationship="Self.FK_Behavior_Student" FromRole="Student" ToRole="Behavior" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Student_Department" FromRole="Student" ToRole="Department" />
+          <NavigationProperty Name="RegisterTasks" Relationship="Self.FK_RegisterTask_Student" FromRole="Student" ToRole="RegisterTask" />
+          <NavigationProperty Name="RegisterTests" Relationship="Self.FK_RegisterTest_Student" FromRole="Student" ToRole="RegisterTest" />
+          <NavigationProperty Name="Sharings" Relationship="Self.FK_Sharing_Student" FromRole="Student" ToRole="Sharing" />
+          <NavigationProperty Name="Student_Duty" Relationship="Self.FK_Student_Duty_Student" FromRole="Student" ToRole="Student_Duty" />
+        </EntityType>
+        <EntityType Name="Student_Duty">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+            <PropertyRef Name="Duty_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="Int32" Nullable="false" />
+          <Property Name="Duty_Id" Type="Int32" Nullable="false" />
+          <Property Name="IsSolved" Type="Boolean" Nullable="false" />
+          <Property Name="Memorized" Type="Int32" />
+          <Property Name="Reading" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsEarly" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Duty" Relationship="Self.FK_Student_Duty_Duty" FromRole="Student_Duty" ToRole="Duty" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Student_Duty_Student" FromRole="Student_Duty" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Class_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Behaviors" Relationship="Self.FK_Behavior_Subject" FromRole="Subject" ToRole="Behavior" />
+          <NavigationProperty Name="Class" Relationship="Self.FK_Subject_Class1" FromRole="Subject" ToRole="Class" />
+          <NavigationProperty Name="Duties" Relationship="Self.FK_Duty_Subject1" FromRole="Subject" ToRole="Duty" />
+          <NavigationProperty Name="Sharings" Relationship="Self.FK_Sharing_Subject" FromRole="Subject" ToRole="Sharing" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Subject" FromRole="Subject" ToRole="Task" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK_Test_Subject" FromRole="Subject" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Start" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Finish" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Department_Id" Type="Int32" Nullable="false" />
+          <Property Name="Subject_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Task_Department" FromRole="Task" ToRole="Department" />
+          <NavigationProperty Name="RegisterTasks" Relationship="Self.FK_RegisterTask_Task" FromRole="Task" ToRole="RegisterTask" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Task_Subject" FromRole="Task" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TimePeriod" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FinalDate" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Test1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Department_Id" Type="Int32" Nullable="false" />
+          <Property Name="Subject_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Test_Department" FromRole="Test" ToRole="Department" />
+          <NavigationProperty Name="RegisterTests" Relationship="Self.FK_RegisterTest_Test" FromRole="Test" ToRole="RegisterTest" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Test_Subject" FromRole="Test" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Week">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Start" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Finish" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Behaviors" Relationship="Self.FK_Behavior_Week" FromRole="Week" ToRole="Behavior" />
+          <NavigationProperty Name="Sharings" Relationship="Self.FK_Sharing_Week" FromRole="Week" ToRole="Sharing" />
+        </EntityType>
+        <Association Name="FK_Behavior_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Behavior" Type="Self.Behavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Behavior">
+              <PropertyRef Name="Sudent_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Behavior_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Behavior" Type="Self.Behavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Behavior">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Behavior_Week">
+          <End Role="Week" Type="Self.Week" Multiplicity="1" />
+          <End Role="Behavior" Type="Self.Behavior" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Week">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Behavior">
+              <PropertyRef Name="Week_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Department_Class">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="Class_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subject_Class1">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Subject">
+              <PropertyRef Name="Class_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Duty_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Department_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Duty_Subject1">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Duty" Type="Self.Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Duty">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Duty_Duty">
+          <End Role="Duty" Type="Self.Duty" Multiplicity="1" />
+          <End Role="Student_Duty" Type="Self.Student_Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Duty">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student_Duty">
+              <PropertyRef Name="Duty_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisterTask_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="RegisterTask" Type="Self.RegisterTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisterTask">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisterTask_Task">
+          <End Role="Task" Type="Self.Task" Multiplicity="1" />
+          <End Role="RegisterTask" Type="Self.RegisterTask" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisterTask">
+              <PropertyRef Name="Task_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisterTest_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="RegisterTest" Type="Self.RegisterTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisterTest">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisterTest_Test">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="RegisterTest" Type="Self.RegisterTest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RegisterTest">
+              <PropertyRef Name="Test_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Sharing" Type="Self.Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Sharing" Type="Self.Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sharing_Week">
+          <End Role="Week" Type="Self.Week" Multiplicity="1" />
+          <End Role="Sharing" Type="Self.Sharing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Week">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Sharing">
+              <PropertyRef Name="Week_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Duty_Student">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Student_Duty" Type="Self.Student_Duty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Student_Duty">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Test_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="Subject_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Behaviors" EntityType="Self.Behavior" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Duties" EntityType="Self.Duty" />
+          <EntitySet Name="RegisterTasks" EntityType="Self.RegisterTask" />
+          <EntitySet Name="RegisterTests" EntityType="Self.RegisterTest" />
+          <EntitySet Name="Sharings" EntityType="Self.Sharing" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Student_Duty" EntityType="Self.Student_Duty" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tasks" EntityType="Self.Task" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="Weeks" EntityType="Self.Week" />
+          <AssociationSet Name="FK_Behavior_Student" Association="Self.FK_Behavior_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Behavior" EntitySet="Behaviors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Behavior_Subject" Association="Self.FK_Behavior_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Behavior" EntitySet="Behaviors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Behavior_Week" Association="Self.FK_Behavior_Week">
+            <End Role="Week" EntitySet="Weeks" />
+            <End Role="Behavior" EntitySet="Behaviors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Department_Class" Association="Self.FK_Department_Class">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subject_Class1" Association="Self.FK_Subject_Class1">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Subject" EntitySet="Subjects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Duty_Department" Association="Self.FK_Duty_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Duty" EntitySet="Duties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Department" Association="Self.FK_Student_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Department" Association="Self.FK_Task_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Department" Association="Self.FK_Test_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Duty_Subject1" Association="Self.FK_Duty_Subject1">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Duty" EntitySet="Duties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Duty_Duty" Association="Self.FK_Student_Duty_Duty">
+            <End Role="Duty" EntitySet="Duties" />
+            <End Role="Student_Duty" EntitySet="Student_Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisterTask_Student" Association="Self.FK_RegisterTask_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="RegisterTask" EntitySet="RegisterTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisterTask_Task" Association="Self.FK_RegisterTask_Task">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="RegisterTask" EntitySet="RegisterTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisterTest_Student" Association="Self.FK_RegisterTest_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="RegisterTest" EntitySet="RegisterTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisterTest_Test" Association="Self.FK_RegisterTest_Test">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="RegisterTest" EntitySet="RegisterTests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Student" Association="Self.FK_Sharing_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Sharing" EntitySet="Sharings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Subject" Association="Self.FK_Sharing_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Sharing" EntitySet="Sharings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sharing_Week" Association="Self.FK_Sharing_Week">
+            <End Role="Week" EntitySet="Weeks" />
+            <End Role="Sharing" EntitySet="Sharings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Duty_Student" Association="Self.FK_Student_Duty_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Student_Duty" EntitySet="Student_Duty" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_Subject" Association="Self.FK_Task_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Test_Subject" Association="Self.FK_Test_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="STDModelStoreContainer" CdmEntityContainer="STDEntities">
+          <EntitySetMapping Name="Behaviors">
+            <EntityTypeMapping TypeName="STDModel.Behavior">
+              <MappingFragment StoreEntitySet="Behavior">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Ok" ColumnName="Ok" />
+                <ScalarProperty Name="Bad" ColumnName="Bad" />
+                <ScalarProperty Name="Sleep" ColumnName="Sleep" />
+                <ScalarProperty Name="GetBook" ColumnName="GetBook" />
+                <ScalarProperty Name="Sudent_Id" ColumnName="Sudent_Id" />
+                <ScalarProperty Name="Subject_Id" ColumnName="Subject_Id" />
+                <ScalarProperty Name="Week_Id" ColumnName="Week_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="STDModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="STDModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Class_Id" ColumnName="Class_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Duties">
+            <EntityTypeMapping TypeName="STDModel.Duty">
+              <MappingFragment StoreEntitySet="Duty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Expire" ColumnName="Expire" />
+                <ScalarProperty Name="Subject_Id" ColumnName="Subject_Id" />
+                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterTasks">
+            <EntityTypeMapping TypeName="STDModel.RegisterTask">
+              <MappingFragment StoreEntitySet="RegisterTask">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Attend" ColumnName="Attend" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Task_Id" ColumnName="Task_Id" />
+                <ScalarProperty Name="IsEarly" ColumnName="IsEarly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisterTests">
+            <EntityTypeMapping TypeName="STDModel.RegisterTest">
+              <MappingFragment StoreEntitySet="RegisterTest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Degree" ColumnName="Degree" />
+                <ScalarProperty Name="Attend" ColumnName="Attend" />
+                <ScalarProperty Name="IsEarly" ColumnName="IsEarly" />
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Test_Id" ColumnName="Test_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sharings">
+            <EntityTypeMapping TypeName="STDModel.Sharing">
+              <MappingFragment StoreEntitySet="Sharing">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Sharing1" ColumnName="Sharing" />
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Subject_Id" ColumnName="Subject_Id" />
+                <ScalarProperty Name="Week_Id" ColumnName="Week_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="STDModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="CivilNumber" ColumnName="CivilNumber" />
+                <ScalarProperty Name="Points" ColumnName="Points" />
+                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Student_Duty">
+            <EntityTypeMapping TypeName="STDModel.Student_Duty">
+              <MappingFragment StoreEntitySet="Student_Duty">
+                <ScalarProperty Name="Student_Id" ColumnName="Student_Id" />
+                <ScalarProperty Name="Duty_Id" ColumnName="Duty_Id" />
+                <ScalarProperty Name="IsSolved" ColumnName="IsSolved" />
+                <ScalarProperty Name="Memorized" ColumnName="Memorized" />
+                <ScalarProperty Name="Reading" ColumnName="Reading" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="IsEarly" ColumnName="IsEarly" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="STDModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Class_Id" ColumnName="Class_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="STDModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="STDModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Finish" ColumnName="Finish" />
+                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+                <ScalarProperty Name="Subject_Id" ColumnName="Subject_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="STDModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TimePeriod" ColumnName="TimePeriod" />
+                <ScalarProperty Name="FinalDate" ColumnName="FinalDate" />
+                <ScalarProperty Name="Test1" ColumnName="Test" />
+                <ScalarProperty Name="Department_Id" ColumnName="Department_Id" />
+                <ScalarProperty Name="Subject_Id" ColumnName="Subject_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weeks">
+            <EntityTypeMapping TypeName="STDModel.Week">
+              <MappingFragment StoreEntitySet="Week">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Finish" ColumnName="Finish" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

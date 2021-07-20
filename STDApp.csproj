@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D59E95ED-E0E2-44C7-A1DE-AA90F751D32F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>STDApp</RootNamespace>
+    <AssemblyName>STDApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Configuration.ConfigurationManager.5.0.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Permissions.5.0.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>lib\RCWF\2020.1.218.40\Telerik.WinControls.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.GridView, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>lib\RCWF\2020.1.218.40\Telerik.WinControls.GridView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.PdfViewer, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.RichTextEditor, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Aqua, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Breeze, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Crystal, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.CrystalDark, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Desert, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Fluent, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.FluentDark, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.HighContrastBlack, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Material, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.MaterialBlueGrey, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>lib\RCWF\2020.1.218.40\Telerik.WinControls.Themes.MaterialBlueGrey.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.MaterialPink, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.MaterialTeal, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2007Black, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2007Silver, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2010Black, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2010Blue, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2010Silver, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2013Dark, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2013Light, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.TelerikMetro, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.TelerikMetroBlue, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.TelerikMetroTouch, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Light, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Windows7, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>lib\RCWF\2020.1.218.40\Telerik.WinControls.UI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core, Version=2020.1.212.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7" />
+    <Reference Include="Telerik.Windows.Documents.Fixed, Version=2020.1.212.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7" />
+    <Reference Include="TelerikCommon, Version=2020.1.218.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL">
+      <HintPath>lib\RCWF\2020.1.218.40\TelerikCommon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbsenceFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbsenceFrm.Designer.cs">
+      <DependentUpon>AbsenceFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Behavior.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Class.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ClassFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClassFrm.Designer.cs">
+      <DependentUpon>ClassFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComboBoxDataSourceObject.cs" />
+    <Compile Include="Department.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentFrm.Designer.cs">
+      <DependentUpon>DepartmentFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Duty.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DutyFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DutyFrm.Designer.cs">
+      <DependentUpon>DutyFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm.Designer.cs">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PointsFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PointsFrm.Designer.cs">
+      <DependentUpon>PointsFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegBehaviorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegBehaviorFrm.Designer.cs">
+      <DependentUpon>RegBehaviorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegDutyFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegDutyFrm.Designer.cs">
+      <DependentUpon>RegDutyFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterTask.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterTest.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RegTaskFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegTaskFrm.Designer.cs">
+      <DependentUpon>RegTaskFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegTestFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegTestFrm.Designer.cs">
+      <DependentUpon>RegTestFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sharing.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SharingFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SharingFrm.Designer.cs">
+      <DependentUpon>SharingFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentFrm.Designer.cs">
+      <DependentUpon>StudentFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student_Duty.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Subject.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubjectFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SubjectFrm.Designer.cs">
+      <DependentUpon>SubjectFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Task.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaskFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskFrm.Designer.cs">
+      <DependentUpon>TaskFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Test.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="testFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="testFrm.Designer.cs">
+      <DependentUpon>testFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Week.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WeekFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeekFrm.Designer.cs">
+      <DependentUpon>WeekFrm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AbsenceFrm.resx">
+      <DependentUpon>AbsenceFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClassFrm.resx">
+      <DependentUpon>ClassFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentFrm.resx">
+      <DependentUpon>DepartmentFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DutyFrm.resx">
+      <DependentUpon>DutyFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm.resx">
+      <DependentUpon>MainFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PointsFrm.resx">
+      <DependentUpon>PointsFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RegBehaviorFrm.resx">
+      <DependentUpon>RegBehaviorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegDutyFrm.resx">
+      <DependentUpon>RegDutyFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegTaskFrm.resx">
+      <DependentUpon>RegTaskFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegTestFrm.resx">
+      <DependentUpon>RegTestFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SharingFrm.resx">
+      <DependentUpon>SharingFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentFrm.resx">
+      <DependentUpon>StudentFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubjectFrm.resx">
+      <DependentUpon>SubjectFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TaskFrm.resx">
+      <DependentUpon>TaskFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="testFrm.resx">
+      <DependentUpon>testFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeekFrm.resx">
+      <DependentUpon>WeekFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\Behavior.datasource" />
+    <None Include="Properties\DataSources\Duty.datasource" />
+    <None Include="Properties\DataSources\RegisterTask1.datasource" />
+    <None Include="Properties\DataSources\RegisterTest.datasource" />
+    <None Include="Properties\DataSources\Sharing.datasource" />
+    <None Include="Properties\DataSources\Student.datasource" />
+    <None Include="Properties\DataSources\Student_Duty.datasource" />
+    <None Include="Properties\DataSources\Week.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties ShouldAddDPIScalingManifest="False" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
