@@ -54,7 +54,7 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Class.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>().OrderBy(a => a.ID);
                 radDropclasses.SelectedIndex = -1;
             }
             model.ID = 0;
@@ -73,7 +73,7 @@ namespace STDApp
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
                 radDropDepartment.DataSource = db.Department
-                        .Where(dep => dep.Class_Id == x).ToList();
+                        .Where(dep => dep.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;

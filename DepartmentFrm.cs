@@ -50,7 +50,7 @@ namespace STDApp
             }
             using (STDEntities db = new STDEntities())
             {
-                ClassDropdownlist.DataSource = db.Class.ToList<Class>();
+                ClassDropdownlist.DataSource = db.Class.ToList<Class>().OrderBy(a => a.ID);
                 ClassDropdownlist.ValueMember = "ID";
                 ClassDropdownlist.DisplayMember = "Name";
                 ClassDropdownlist.SelectedIndex = -1;

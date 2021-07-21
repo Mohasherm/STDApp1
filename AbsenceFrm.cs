@@ -29,14 +29,14 @@ namespace STDApp
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
                 radDropDepartment.DataSource = db.Department
-                        .Where(dep => dep.Class_Id == x).ToList();
+                        .Where(dep => dep.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
                 radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
                 radDropSubject.DataSource = db.Subject
-                       .Where(sub => sub.Class_Id == x).ToList();
+                       .Where(sub => sub.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
                 radDropSubject.SelectedIndex = -1;
@@ -55,18 +55,21 @@ namespace STDApp
             txtstudent.HeaderText = "الطالب";
             txtstudent.PinPosition = PinnedColumnPosition.Left;
             radGridView.Columns.Add(txtstudent);            
-            radGridView.BestFitColumns();
+             radGridView.Columns[6].Width = 150;       
+           // radGridView.BestFitColumns();
 
 
             using (STDEntities db = new STDEntities())
             {
-                radDropclasses.ValueMember = "ID";
+               radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Class.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>().OrderBy(a => a.ID);              
                 radDropclasses.SelectedIndex = -1;
                 db.Absence.Load();
             }
+            date.ValueChanged -= date_ValueChanged;
             clear();
+            date.ValueChanged += date_ValueChanged;
         }
 
         void clear()
@@ -87,12 +90,12 @@ namespace STDApp
                 radGridView1.AutoGenerateColumns = false;
                 var x = Convert.ToInt32(radDropDepartment.SelectedValue);
                 var y =date.Text;
-                // var z = Convert.ToInt32(radDropSubject.SelectedValue);
+                var z = Convert.ToInt32(radDropSubject.SelectedValue);
 
                 using (STDEntities db = new STDEntities())
                 {
                     List<int> result = db.Absence
-                        .Where(a => a.Date == y)
+                        .Where(a => a.Date == y && a.Subject_Id == z)
                         .Select(a => a.Student_Id).ToList();
 
                     radGridView1.DataSource = (from std in db.Student.Where(c => !result.Contains(c.ID))
@@ -107,7 +110,8 @@ namespace STDApp
                                                }).ToList();
                     PopulateDataGridView();
                     radGridView.Columns[6].Width = 150;                   
-                    radGridView.Columns[2].Width = 150;                   
+                    radGridView.Columns[2].Width = 150;
+                 
                 }
             }
         }
@@ -116,13 +120,13 @@ namespace STDApp
         {
 
             var x = date.Text;
-            //var z = Convert.ToInt32(radDropSubject.SelectedValue);
+            var z = Convert.ToInt32(radDropSubject.SelectedValue);
             var v = Convert.ToInt32(radDropDepartment.SelectedValue);
             dbContext.Absence.LoadAsync().ContinueWith(loadTask =>
             {
                 // Bind data to control when loading complete
                 absenceBindingSource.DataSource = dbContext.Absence
-                          .Where(a => a.Date == x && a.Student.Department_Id == v).ToList();
+                          .Where(a => a.Date == x && a.Student.Department_Id == v && a.Subject_Id ==z).ToList();
             }, System.Threading.Tasks.TaskScheduler.FromCurrentSynchronizationContext());
         }
        
@@ -168,6 +172,7 @@ namespace STDApp
                 Generate();
                 PopulateDataGridView();
                 radGridView.Refresh();
+                model.ID = 0;
             }
             else
             {
@@ -196,14 +201,12 @@ namespace STDApp
         {
             absenceBindingSource.DataSource = dbContext.Absence.Where(a => a.ID == -1).ToList();
             radGridView1.DataSource = null;
-            radDropSubject.SelectedIndex = -1;
-            date.Value = DateTime.Now;
-           
+            radDropSubject.SelectedIndex = -1;           
         }
 
         private void date_ValueChanged(object sender, EventArgs e)
         {
-            //Generate();
+            Generate();
         }
 
         private void AbsenceFrm_FormClosing(object sender, FormClosingEventArgs e)

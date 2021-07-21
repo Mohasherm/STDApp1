@@ -38,7 +38,7 @@ namespace STDApp
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Class.ToList<Class>();
+                radDropclasses.DataSource = db.Class.ToList<Class>().OrderBy(a => a.ID);
                 radDropclasses.SelectedIndex = -1;
 
                 db.RegisterTest.Load();
@@ -81,14 +81,14 @@ namespace STDApp
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
                 radDropDepartment.DataSource = db.Department
-                        .Where(dep => dep.Class_Id == x).ToList();
+                        .Where(dep => dep.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
                 radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
                 radDropSubject.DataSource = db.Subject
-                       .Where(sub => sub.Class_Id == x).ToList();
+                       .Where(sub => sub.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
                 radDropSubject.SelectedIndex = -1;
@@ -252,7 +252,7 @@ namespace STDApp
                 var z = Convert.ToInt32(radDropSubject.SelectedValue);
                 var v = Convert.ToInt32(radDropDepartment.SelectedValue);
                 radDropTaskTitle.SelectedIndexChanged -= radDropTaskTitle_SelectedIndexChanged;
-                radDropTaskTitle.DataSource = dbContext.Task.Where(a => a.Department_Id == v && a.Subject_Id == z).ToList<Task>();
+                radDropTaskTitle.DataSource = dbContext.Task.Where(a => a.Department_Id == v && a.Subject_Id == z).ToList<Task>().OrderBy(a => a.ID);
                 radDropTaskTitle.SelectedIndex = -1;
                 radDropTaskTitle.SelectedIndexChanged += radDropTaskTitle_SelectedIndexChanged;
             }
