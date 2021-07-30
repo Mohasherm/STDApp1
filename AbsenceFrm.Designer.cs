@@ -233,6 +233,7 @@ namespace STDApp
             gridViewTextBoxColumn3});
             this.radGridView.MasterTemplate.DataSource = this.absenceBindingSource;
             this.radGridView.MasterTemplate.EnableAlternatingRowColor = true;
+            this.radGridView.MasterTemplate.EnableFiltering = true;
             this.radGridView.MasterTemplate.EnableGrouping = false;
             this.radGridView.MasterTemplate.EnableSorting = false;
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;

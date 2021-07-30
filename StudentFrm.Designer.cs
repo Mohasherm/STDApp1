@@ -87,17 +87,17 @@ namespace STDApp
             gridViewTextBoxColumn2.FieldName = "Name";
             gridViewTextBoxColumn2.HeaderText = "الاسم";
             gridViewTextBoxColumn2.Name = "Name";
-            gridViewTextBoxColumn2.Width = 150;
+            gridViewTextBoxColumn2.Width = 300;
             gridViewTextBoxColumn3.EnableExpressionEditor = false;
             gridViewTextBoxColumn3.FieldName = "Mobile";
             gridViewTextBoxColumn3.HeaderText = "جوال ولي الأمر";
             gridViewTextBoxColumn3.Name = "Mobile";
-            gridViewTextBoxColumn3.Width = 110;
+            gridViewTextBoxColumn3.Width = 150;
             gridViewTextBoxColumn4.EnableExpressionEditor = false;
             gridViewTextBoxColumn4.FieldName = "CivilNumber";
             gridViewTextBoxColumn4.HeaderText = "رقم الهوية";
             gridViewTextBoxColumn4.Name = "CivilNumber";
-            gridViewTextBoxColumn4.Width = 100;
+            gridViewTextBoxColumn4.Width = 150;
             gridViewTextBoxColumn5.EnableExpressionEditor = false;
             gridViewTextBoxColumn5.FieldName = "ClassId";
             gridViewTextBoxColumn5.HeaderText = "column5";
@@ -107,7 +107,7 @@ namespace STDApp
             gridViewTextBoxColumn6.FieldName = "ClassName";
             gridViewTextBoxColumn6.HeaderText = "الصف";
             gridViewTextBoxColumn6.Name = "ClassName";
-            gridViewTextBoxColumn6.Width = 98;
+            gridViewTextBoxColumn6.Width = 150;
             gridViewTextBoxColumn7.EnableExpressionEditor = false;
             gridViewTextBoxColumn7.FieldName = "DepartmentId";
             gridViewTextBoxColumn7.HeaderText = "column7";
@@ -117,7 +117,7 @@ namespace STDApp
             gridViewTextBoxColumn8.FieldName = "DepartmentName";
             gridViewTextBoxColumn8.HeaderText = "الفصل";
             gridViewTextBoxColumn8.Name = "DepartmentName";
-            gridViewTextBoxColumn8.Width = 98;
+            gridViewTextBoxColumn8.Width = 150;
             this.radGrid.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn1,
             gridViewTextBoxColumn2,
@@ -134,7 +134,7 @@ namespace STDApp
             this.radGrid.Name = "radGrid";
             this.radGrid.ReadOnly = true;
             this.radGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radGrid.Size = new System.Drawing.Size(577, 399);
+            this.radGrid.Size = new System.Drawing.Size(931, 399);
             this.radGrid.TabIndex = 0;
             this.radGrid.DoubleClick += new System.EventHandler(this.radGrid_DoubleClick);
             // 
@@ -274,7 +274,7 @@ namespace STDApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(902, 399);
+            this.ClientSize = new System.Drawing.Size(1256, 399);
             this.Controls.Add(this.txtcivilnumber);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtmobile);

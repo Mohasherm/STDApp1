@@ -81,22 +81,24 @@ namespace STDApp
             dropSharing.ValueMember = "Id";
             dropSharing.DisplayMember = "MyString";
             BindingList<ComboBoxDataSourceObject> list = new BindingList<ComboBoxDataSourceObject>();
-            ComboBoxDataSourceObject object4 = new ComboBoxDataSourceObject();
-            object4.Id = 0;
-            object4.MyString = "ضعيف";
-            list.Add(object4);
-            ComboBoxDataSourceObject object1 = new ComboBoxDataSourceObject();
-            object1.Id = 1;
-            object1.MyString = "جيد";
-            list.Add(object1);
-            ComboBoxDataSourceObject object2 = new ComboBoxDataSourceObject();
-            object2.Id = 2;
-            object2.MyString = "جيد جداً";
-            list.Add(object2);
             ComboBoxDataSourceObject object3 = new ComboBoxDataSourceObject();
-            object3.Id = 3;
+            object3.Id = 0;
             object3.MyString = "ممتاز";
             list.Add(object3);
+            ComboBoxDataSourceObject object2 = new ComboBoxDataSourceObject();
+            object2.Id = 1;
+            object2.MyString = "جيد جداً";
+            list.Add(object2);
+            ComboBoxDataSourceObject object1 = new ComboBoxDataSourceObject();
+            object1.Id = 2;
+            object1.MyString = "جيد";
+            list.Add(object1);
+            ComboBoxDataSourceObject object4 = new ComboBoxDataSourceObject();
+            object4.Id = 3;
+            object4.MyString = "ضعيف";
+            list.Add(object4);       
+           
+           
            
             dropSharing.DataSource = list;
             radGridView.Columns.Add(dropSharing);
@@ -129,17 +131,20 @@ namespace STDApp
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
+                radDropDepartment.SelectedIndexChanged -= radDropDepartment_SelectedIndexChanged;
                 radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
-
+                radDropDepartment.SelectedIndexChanged += radDropDepartment_SelectedIndexChanged;
+                radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
                 radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropSubject.ValueMember = "ID";
                 radDropSubject.DisplayMember = "Name";
                 radDropSubject.SelectedIndex = -1;
+                radDropSubject.SelectedIndexChanged += radDropSubject_SelectedIndexChanged;
             }
         }
 

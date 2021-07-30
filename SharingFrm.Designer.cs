@@ -320,10 +320,10 @@ namespace STDApp
             // 
             this.radDropShare.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropShare.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            radListDataItem1.Text = "ضعيف";
-            radListDataItem2.Text = "جيد";
-            radListDataItem3.Text = "جيد جداً";
-            radListDataItem4.Text = "ممتاز";
+            radListDataItem1.Text = "ممتاز";
+            radListDataItem2.Text = "جيد جداً";
+            radListDataItem3.Text = "جيد";
+            radListDataItem4.Text = "ضعيف";
             this.radDropShare.Items.Add(radListDataItem1);
             this.radDropShare.Items.Add(radListDataItem2);
             this.radDropShare.Items.Add(radListDataItem3);

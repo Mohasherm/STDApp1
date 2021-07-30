@@ -282,7 +282,7 @@ namespace STDApp
                 {
                 if (item != null)
                 {
-                    if (item.Sharing1 == 0)
+                    if (item.Sharing1 == 2)
                     {
                     model.ID = item.Student_Id;
                     using (STDEntities db = new STDEntities())
@@ -300,7 +300,7 @@ namespace STDApp
                         model.Points = 8 + i;
                     }
                 }
-                    if (item.Sharing1 == 2)
+                    if (item.Sharing1 == 0)
                     {
                     model.ID = item.Student_Id;
                     using (STDEntities db = new STDEntities())

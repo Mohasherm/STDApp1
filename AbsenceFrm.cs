@@ -28,13 +28,14 @@ namespace STDApp
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
+                radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
                 radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
 
-                radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
+                //radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
                 radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropSubject.ValueMember = "ID";
