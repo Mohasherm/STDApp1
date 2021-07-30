@@ -82,7 +82,7 @@ namespace STDApp
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(913, 53);
+            this.radPanel1.Size = new System.Drawing.Size(940, 53);
             this.radPanel1.TabIndex = 4;
             // 
             // date
@@ -176,7 +176,7 @@ namespace STDApp
             this.radGridView.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.radGridView.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radGridView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radGridView.Location = new System.Drawing.Point(350, 53);
+            this.radGridView.Location = new System.Drawing.Point(377, 53);
             // 
             // 
             // 
@@ -271,7 +271,7 @@ namespace STDApp
             gridViewTextBoxColumn5.FieldName = "Name";
             gridViewTextBoxColumn5.HeaderText = "الطالب";
             gridViewTextBoxColumn5.Name = "Name";
-            gridViewTextBoxColumn5.Width = 175;
+            gridViewTextBoxColumn5.Width = 250;
             gridViewTextBoxColumn6.EnableExpressionEditor = false;
             gridViewTextBoxColumn6.FieldName = "DepartmentId";
             gridViewTextBoxColumn6.HeaderText = "DepartmentId";
@@ -281,7 +281,7 @@ namespace STDApp
             gridViewTextBoxColumn7.FieldName = "DepartmentName";
             gridViewTextBoxColumn7.HeaderText = "الفصل";
             gridViewTextBoxColumn7.Name = "DepartmentName";
-            gridViewTextBoxColumn7.Width = 145;
+            gridViewTextBoxColumn7.Width = 100;
             this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
@@ -294,7 +294,7 @@ namespace STDApp
             this.radGridView1.Name = "radGridView1";
             this.radGridView1.ReadOnly = true;
             this.radGridView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radGridView1.Size = new System.Drawing.Size(350, 337);
+            this.radGridView1.Size = new System.Drawing.Size(377, 337);
             this.radGridView1.TabIndex = 57;
             // 
             // AddBtn
@@ -312,7 +312,7 @@ namespace STDApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(913, 450);
+            this.ClientSize = new System.Drawing.Size(940, 450);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.radGridView1);
             this.Controls.Add(this.radGridView);

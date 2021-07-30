@@ -133,18 +133,22 @@ namespace STDApp
             // 
             this.radGrid.MasterTemplate.AllowAddNewRow = false;
             this.radGrid.MasterTemplate.AllowColumnReorder = false;
+            gridViewTextBoxColumn1.EnableExpressionEditor = false;
             gridViewTextBoxColumn1.FieldName = "ID";
             gridViewTextBoxColumn1.HeaderText = "ID";
             gridViewTextBoxColumn1.IsVisible = false;
             gridViewTextBoxColumn1.Name = "ID";
+            gridViewTextBoxColumn2.EnableExpressionEditor = false;
             gridViewTextBoxColumn2.FieldName = "Name";
             gridViewTextBoxColumn2.HeaderText = "المادة";
             gridViewTextBoxColumn2.Name = "Name";
             gridViewTextBoxColumn2.Width = 150;
+            gridViewTextBoxColumn3.EnableExpressionEditor = false;
             gridViewTextBoxColumn3.FieldName = "ClassId";
             gridViewTextBoxColumn3.HeaderText = "column3";
             gridViewTextBoxColumn3.IsVisible = false;
             gridViewTextBoxColumn3.Name = "ClassId";
+            gridViewTextBoxColumn4.EnableExpressionEditor = false;
             gridViewTextBoxColumn4.FieldName = "ClassName";
             gridViewTextBoxColumn4.HeaderText = "الصف";
             gridViewTextBoxColumn4.Name = "ClassName";
@@ -155,7 +159,6 @@ namespace STDApp
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4});
             this.radGrid.MasterTemplate.EnableFiltering = true;
-            this.radGrid.MasterTemplate.EnableGrouping = false;
             this.radGrid.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGrid.Name = "radGrid";
             this.radGrid.ReadOnly = true;

@@ -106,6 +106,7 @@ namespace STDApp
             gridViewTextBoxColumn4.HeaderText = "الإختبار";
             gridViewTextBoxColumn4.Name = "Test";
             gridViewTextBoxColumn4.Width = 270;
+            gridViewTextBoxColumn4.WrapText = true;
             gridViewTextBoxColumn5.EnableExpressionEditor = false;
             gridViewTextBoxColumn5.FieldName = "ClassId";
             gridViewTextBoxColumn5.HeaderText = "ClassId";

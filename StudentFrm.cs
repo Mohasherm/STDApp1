@@ -141,7 +141,7 @@ namespace STDApp
                 {
                     if (model.ID == 0)
                     {
-                        if (IsNameAvailable(model.Name))
+                        if (IsNameAvailable(model.Name, model.Department_Id))
                         {
                             db.Student.Add(model);
                             //MessageBox.Show("تمت الإضافة بنجاح");
@@ -171,11 +171,11 @@ namespace STDApp
             }
         }
 
-        public bool IsNameAvailable(string name)
+        public bool IsNameAvailable(string name ,int dep)
         {
             using (STDEntities db = new STDEntities())
             {
-                bool Number = db.Student.Where(m => m.Name == name).Any();
+                bool Number = db.Student.Where(m => m.Name == name && m.Department_Id == dep).Any();
 
                 return !Number;
 
