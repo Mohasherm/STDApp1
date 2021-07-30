@@ -38,6 +38,7 @@ namespace STDApp
             this.radMenuItem4 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem13 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem23 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuItem24 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem5 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem12 = new Telerik.WinControls.UI.RadMenuItem();
             this.radMenuItem6 = new Telerik.WinControls.UI.RadMenuItem();
@@ -55,7 +56,7 @@ namespace STDApp
             this.materialPinkTheme1 = new Telerik.WinControls.Themes.MaterialPinkTheme();
             this.telerikMetroBlueTheme1 = new Telerik.WinControls.Themes.TelerikMetroBlueTheme();
             this.radMenu1 = new Telerik.WinControls.UI.RadMenu();
-            this.radMenuItem24 = new Telerik.WinControls.UI.RadMenuItem();
+            this.radMenuButtonItem1 = new Telerik.WinControls.UI.RadMenuButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.radMenu1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,6 +121,12 @@ namespace STDApp
             this.radMenuItem23.Name = "radMenuItem23";
             this.radMenuItem23.Text = "ادارة النقاط";
             this.radMenuItem23.Click += new System.EventHandler(this.radMenuItem23_Click);
+            // 
+            // radMenuItem24
+            // 
+            this.radMenuItem24.Name = "radMenuItem24";
+            this.radMenuItem24.Text = "ادارة الغياب";
+            this.radMenuItem24.Click += new System.EventHandler(this.radMenuItem24_Click);
             // 
             // radMenuItem5
             // 
@@ -227,25 +234,26 @@ namespace STDApp
             this.radMenuItem3,
             this.radMenuItem4,
             this.radMenuItem5,
-            this.radMenuItem6});
+            this.radMenuItem6,
+            this.radMenuButtonItem1});
             this.radMenu1.Location = new System.Drawing.Point(0, 0);
             this.radMenu1.Name = "radMenu1";
             this.radMenu1.Padding = new System.Windows.Forms.Padding(2, 2, 0, 0);
-            this.radMenu1.Size = new System.Drawing.Size(657, 30);
+            this.radMenu1.Size = new System.Drawing.Size(720, 36);
             this.radMenu1.TabIndex = 12;
             // 
-            // radMenuItem24
+            // radMenuButtonItem1
             // 
-            this.radMenuItem24.Name = "radMenuItem24";
-            this.radMenuItem24.Text = "ادارة الغياب";
-            this.radMenuItem24.Click += new System.EventHandler(this.radMenuItem24_Click);
+            this.radMenuButtonItem1.Name = "radMenuButtonItem1";
+            this.radMenuButtonItem1.Text = "إرسال التحديثات";
+            this.radMenuButtonItem1.Click += new System.EventHandler(this.RadMenuButtonItem1_Click);
             // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(657, 400);
+            this.ClientSize = new System.Drawing.Size(720, 400);
             this.Controls.Add(this.radMenu1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainFrm";
@@ -288,6 +296,7 @@ namespace STDApp
         private Telerik.WinControls.UI.RadMenuItem radMenuItem22;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem23;
         private Telerik.WinControls.UI.RadMenuItem radMenuItem24;
+        private Telerik.WinControls.UI.RadMenuButtonItem radMenuButtonItem1;
     }
 }
 

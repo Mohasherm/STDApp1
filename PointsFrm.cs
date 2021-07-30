@@ -191,7 +191,7 @@ namespace STDApp
                         using (STDEntities db = new STDEntities())
                         {
                             int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
-                            model.Points = 5 + i;
+                            model.Points = 10 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
                         }
@@ -202,7 +202,7 @@ namespace STDApp
                         using (STDEntities db = new STDEntities())
                         {
                             int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
-                            model.Points = 5 + i;
+                            model.Points = 10 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
                         }
@@ -224,7 +224,7 @@ namespace STDApp
                         using (STDEntities db = new STDEntities())
                         {
                             int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
-                            model.Points = 10 + i;
+                            model.Points = 6 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
                         }
@@ -235,7 +235,7 @@ namespace STDApp
                         using (STDEntities db = new STDEntities())
                         {
                             int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
-                            model.Points = 5 + i;
+                            model.Points = 10 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
                         }
@@ -257,7 +257,7 @@ namespace STDApp
                         using (STDEntities db = new STDEntities())
                         {
                             int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
-                            model.Points = 10 + i;
+                            model.Points = 6 + i;
                             db.Entry(model).State = EntityState.Modified;
                             db.SaveChanges();
                         }
@@ -288,7 +288,7 @@ namespace STDApp
                     using (STDEntities db = new STDEntities())
                     {
                         int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
-                        model.Points = 5 + i;
+                        model.Points = 6 + i;
                     }
                 }
                     if (item.Sharing1 == 1)
@@ -374,7 +374,7 @@ namespace STDApp
                         using (STDEntities db = new STDEntities())
                         {
                             int i = db.Student.Where(a => a.ID == item.Student.ID).Select(a => a.Points).FirstOrDefault();
-                            model.Points = (item.Ok * 2) + i;
+                            model.Points = item.Ok + i;
                         }
                         model.CivilNumber = item.Student.CivilNumber;
                         model.Department_Id = item.Student.Department_Id;

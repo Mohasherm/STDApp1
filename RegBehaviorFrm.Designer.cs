@@ -99,16 +99,16 @@ namespace STDApp
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(944, 51);
+            this.radPanel1.Size = new System.Drawing.Size(1018, 51);
             this.radPanel1.TabIndex = 1;
             // 
             // radDropweek
             // 
             this.radDropweek.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropweek.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radDropweek.Location = new System.Drawing.Point(21, 11);
+            this.radDropweek.Location = new System.Drawing.Point(12, 11);
             this.radDropweek.Name = "radDropweek";
-            this.radDropweek.Size = new System.Drawing.Size(160, 27);
+            this.radDropweek.Size = new System.Drawing.Size(180, 27);
             this.radDropweek.TabIndex = 41;
             this.radDropweek.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.radDropweek_SelectedIndexChanged);
             // 
@@ -116,7 +116,7 @@ namespace STDApp
             // 
             this.lblweek.AutoSize = true;
             this.lblweek.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lblweek.Location = new System.Drawing.Point(187, 13);
+            this.lblweek.Location = new System.Drawing.Point(198, 13);
             this.lblweek.Name = "lblweek";
             this.lblweek.Size = new System.Drawing.Size(58, 21);
             this.lblweek.TabIndex = 40;
@@ -126,9 +126,9 @@ namespace STDApp
             // 
             this.radDropSubject.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropSubject.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radDropSubject.Location = new System.Drawing.Point(251, 11);
+            this.radDropSubject.Location = new System.Drawing.Point(260, 11);
             this.radDropSubject.Name = "radDropSubject";
-            this.radDropSubject.Size = new System.Drawing.Size(160, 27);
+            this.radDropSubject.Size = new System.Drawing.Size(180, 27);
             this.radDropSubject.TabIndex = 39;
             this.radDropSubject.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.radDropSubject_SelectedIndexChanged);
             // 
@@ -136,7 +136,7 @@ namespace STDApp
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(417, 13);
+            this.label3.Location = new System.Drawing.Point(446, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 21);
             this.label3.TabIndex = 38;
@@ -146,9 +146,9 @@ namespace STDApp
             // 
             this.radDropDepartment.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropDepartment.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radDropDepartment.Location = new System.Drawing.Point(486, 11);
+            this.radDropDepartment.Location = new System.Drawing.Point(507, 11);
             this.radDropDepartment.Name = "radDropDepartment";
-            this.radDropDepartment.Size = new System.Drawing.Size(160, 27);
+            this.radDropDepartment.Size = new System.Drawing.Size(180, 27);
             this.radDropDepartment.TabIndex = 37;
             this.radDropDepartment.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.radDropDepartment_SelectedIndexChanged);
             // 
@@ -156,7 +156,7 @@ namespace STDApp
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(652, 13);
+            this.label2.Location = new System.Drawing.Point(693, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 21);
             this.label2.TabIndex = 36;
@@ -166,9 +166,9 @@ namespace STDApp
             // 
             this.radDropclasses.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropclasses.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radDropclasses.Location = new System.Drawing.Point(715, 11);
+            this.radDropclasses.Location = new System.Drawing.Point(769, 11);
             this.radDropclasses.Name = "radDropclasses";
-            this.radDropclasses.Size = new System.Drawing.Size(160, 27);
+            this.radDropclasses.Size = new System.Drawing.Size(180, 27);
             this.radDropclasses.TabIndex = 35;
             this.radDropclasses.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.radDropclasses_SelectedIndexChanged);
             // 
@@ -177,7 +177,7 @@ namespace STDApp
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(881, 13);
+            this.label1.Location = new System.Drawing.Point(955, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 21);
             this.label1.TabIndex = 34;
@@ -313,7 +313,7 @@ namespace STDApp
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGridView.Name = "radGridView";
             this.radGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radGridView.Size = new System.Drawing.Size(498, 478);
+            this.radGridView.Size = new System.Drawing.Size(572, 478);
             this.radGridView.TabIndex = 2;
             this.radGridView.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.radGridView_UserDeletingRow);
             this.radGridView.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.radGridView_CellValueChanged);
@@ -355,7 +355,7 @@ namespace STDApp
             gridViewTextBoxColumn5.FieldName = "Name";
             gridViewTextBoxColumn5.HeaderText = "الطالب";
             gridViewTextBoxColumn5.Name = "Name";
-            gridViewTextBoxColumn5.Width = 244;
+            gridViewTextBoxColumn5.Width = 250;
             gridViewTextBoxColumn6.EnableExpressionEditor = false;
             gridViewTextBoxColumn6.FieldName = "DepartmentId";
             gridViewTextBoxColumn6.HeaderText = "DepartmentId";
@@ -365,7 +365,7 @@ namespace STDApp
             gridViewTextBoxColumn7.FieldName = "DepartmentName";
             gridViewTextBoxColumn7.HeaderText = "الفصل";
             gridViewTextBoxColumn7.Name = "DepartmentName";
-            gridViewTextBoxColumn7.Width = 172;
+            gridViewTextBoxColumn7.Width = 150;
             this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn4,
             gridViewTextBoxColumn5,
@@ -459,7 +459,7 @@ namespace STDApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(944, 529);
+            this.ClientSize = new System.Drawing.Size(1018, 529);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);

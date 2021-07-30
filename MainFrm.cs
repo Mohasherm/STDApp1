@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -138,22 +139,127 @@ namespace STDApp
 
         private void MainFrm_Load(object sender, EventArgs e)
         {
-            StreamReader reader = new StreamReader("S_N.mhbk");
-            string serverName = reader.ReadLine();
-            reader.Close();
+            try
+            {
+
+                StreamReader reader = new StreamReader("S_N.mhbk");
+                string serverName = reader.ReadLine();
+                reader.Close();
+
+                //StreamReader reader2 = new StreamReader("BackupPath.mhbk");
+                //setBackupPath = reader2.ReadLine();
+                //reader2.Close();
+
+                //StreamReader reader3 = new StreamReader("BackupPath_Online.mhbk");
+                //setBackupPath_Online = reader3.ReadLine();
+                //reader3.Close();
 
 
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
-            connectionStringsSection.ConnectionStrings["STDEntities"].ConnectionString = string.Format(@"metadata=res://*/Model.csdl|res://*/Model.ssdl|res://*/Model.msl;provider=System.Data.SqlClient;provider connection string=';data source={0};initial catalog=STD;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework';",serverName);
-            config.Save();
-            ConfigurationManager.RefreshSection("connectionStrings");
+
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                var connectionStringsSection = (ConnectionStringsSection)config.GetSection("connectionStrings");
+                connectionStringsSection.ConnectionStrings["STDEntities"].ConnectionString = string.Format(@"metadata=res://*/Model.csdl|res://*/Model.ssdl|res://*/Model.msl;provider=System.Data.SqlClient;provider connection string=';data source={0};initial catalog=STD;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework';", serverName);
+                config.Save();
+                ConfigurationManager.RefreshSection("connectionStrings");
+
+                con = new SqlConnection(string.Format(@"data source={0};initial catalog=STD;integrated security=True;MultipleActiveResultSets=True", serverName));
+                con.Open();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
         }
 
         private void radMenuItem24_Click(object sender, EventArgs e)
         {
             AbsenceFrm absence = new AbsenceFrm();
             absence.ShowDialog();
+        }
+
+        string setBackupPath = @"D:\backups";
+        string setBackupPath_Online = @"R:\My Drive\backups";
+
+
+        public static void CreatBakup(string FilePath, out string ErrorMessage)
+        {
+            CreatBakup(FilePath, con.Database, out ErrorMessage);
+        }
+
+        public static void CreatBakup(string FilePath, string dbName, out string ErrorMessage)
+        {
+            //NOINIT = نسخة تراكمية
+            string cmd_txt = string.Format("backup Database  {0} to Disk = '{1}'  with  DESCRIPTION = '{0}', name = '{0}', INIT" /*+ ", COMPRESSION"*/, dbName, FilePath);
+
+            SqlCommand cmd = new SqlCommand(cmd_txt, con);
+            cmd.CommandTimeout = 900;
+
+            try
+            {
+                con.Open();
+                cmd.ExecuteNonQuery();
+                ErrorMessage = "";
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
+            finally
+            {
+                con.Close();
+            }
+        }
+
+        public static SqlConnection con;
+
+
+        private void RadMenuButtonItem1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+
+                ///////////////////نسخ احتياطي///////////////////////
+                string BakName = con.Database + "-" + DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day + "-" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second + ".bak";
+
+                string ErrorMessage;
+                CreatBakup(setBackupPath + "\\" + BakName, out ErrorMessage);
+                if (ErrorMessage == "")
+                {
+                    MessageBox.Show("تمت عملية النسخ الاحتياطي بنجاح");
+                }
+                else
+                {
+                    MessageBox.Show("خطأ عند إجراء النسخ الاحتياطي; " + ErrorMessage);
+                }
+                ////////////////////////////////////////////////////
+
+
+                ///////////////////نقل الملف///////////////////////
+                //string fileName = _.NewestFileofDirectory(setBackupPath);
+
+                string sourceFile = setBackupPath + "\\" + BakName;
+                string destinationFile = setBackupPath_Online + "\\" + BakName;
+
+                System.IO.File.Copy(sourceFile, destinationFile, true);
+                ////////////////////////////////////////////////////
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+
         }
     }
 }

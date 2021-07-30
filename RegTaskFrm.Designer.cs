@@ -308,7 +308,7 @@ namespace STDApp
             gridViewTextBoxColumn4.FieldName = "Name";
             gridViewTextBoxColumn4.HeaderText = "الطالب";
             gridViewTextBoxColumn4.Name = "Name";
-            gridViewTextBoxColumn4.Width = 200;
+            gridViewTextBoxColumn4.Width = 250;
             gridViewTextBoxColumn5.EnableExpressionEditor = false;
             gridViewTextBoxColumn5.FieldName = "DepartmentId";
             gridViewTextBoxColumn5.HeaderText = "DepartmentId";
@@ -318,7 +318,7 @@ namespace STDApp
             gridViewTextBoxColumn6.FieldName = "DepartmentName";
             gridViewTextBoxColumn6.HeaderText = "الفصل";
             gridViewTextBoxColumn6.Name = "DepartmentName";
-            gridViewTextBoxColumn6.Width = 200;
+            gridViewTextBoxColumn6.Width = 100;
             this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,

@@ -35,18 +35,26 @@ namespace STDApp
             radGridView.Columns.Add(txtstudent);
 
             BindingList<ComboBoxDataSourceObject> list = new BindingList<ComboBoxDataSourceObject>();
-            ComboBoxDataSourceObject object1 = new ComboBoxDataSourceObject();
-            object1.Id = 0;
-            object1.MyString = "جيد";
-            list.Add(object1);
+            ComboBoxDataSourceObject object3 = new ComboBoxDataSourceObject();
+            object3.Id = 0;
+            object3.MyString = "ممتاز";
+            list.Add(object3);
             ComboBoxDataSourceObject object2 = new ComboBoxDataSourceObject();
             object2.Id = 1;
             object2.MyString = "جيد جداً";
             list.Add(object2);
-            ComboBoxDataSourceObject object3 = new ComboBoxDataSourceObject();
-            object3.Id = 2;
-            object3.MyString = "ممتاز";
-            list.Add(object3);
+            ComboBoxDataSourceObject object1 = new ComboBoxDataSourceObject();
+            object1.Id = 2;
+            object1.MyString = "جيد";
+            list.Add(object1);
+            ComboBoxDataSourceObject object4 = new ComboBoxDataSourceObject();
+            object4.Id = 3;
+            object4.MyString = "ضعيف";
+            list.Add(object4);
+            ComboBoxDataSourceObject object5 = new ComboBoxDataSourceObject();
+            object5.Id = 4;
+            object5.MyString = "غائب";
+            list.Add(object5);
 
             GridViewComboBoxColumn dropmemorized = new GridViewComboBoxColumn("Memorized");
             dropmemorized.HeaderText = "حفظ";
@@ -120,12 +128,13 @@ namespace STDApp
             using (STDEntities db = new STDEntities())
             {
                 var x = Convert.ToInt32(radDropclasses.SelectedValue);
+                radDropDepartment.SelectedIndexChanged -= radDropDepartment_SelectedIndexChanged;
                 radDropDepartment.DataSource = db.Department
                         .Where(dep => dep.Class_Id == x).ToList().OrderBy(a => a.ID);
                 radDropDepartment.ValueMember = "ID";
                 radDropDepartment.DisplayMember = "Name";
                 radDropDepartment.SelectedIndex = -1;
-
+                radDropDepartment.SelectedIndexChanged += radDropDepartment_SelectedIndexChanged;
                 radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
                 radDropSubject.DataSource = db.Subject
                        .Where(sub => sub.Class_Id == x).ToList().OrderBy(a => a.ID);
@@ -166,7 +175,7 @@ namespace STDApp
                                                    DepartmentName = radDropDepartment.SelectedItem.Text
                                                }).ToList();
                     PopulateDataGridView();
-                    radGridView.Columns[6].Width = 150;
+                    radGridView.Columns[6].Width = 250;
                     radGridView.Columns[7].Width = 75;
                     radGridView.Columns[8].Width = 75;
                     radGridView.Columns[9].Width = 200;
@@ -292,7 +301,9 @@ namespace STDApp
             radGridView1.DataSource = null;
             radDropDuty.SelectedIndex = -1;
             radDropDuty.DataSource = null;
-           
+            radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
+            radDropSubject.SelectedIndex = -1;
+            radDropSubject.SelectedIndexChanged += radDropSubject_SelectedIndexChanged;
         }
 
         private void radDropSubject_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)

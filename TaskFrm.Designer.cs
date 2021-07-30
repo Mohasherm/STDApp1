@@ -234,25 +234,29 @@ namespace STDApp
             // dateto
             // 
             this.dateto.Culture = new System.Globalization.CultureInfo("ar-SA");
+            this.dateto.CustomFormat = "dd / MMMM / yyyy";
             this.dateto.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.dateto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateto.Location = new System.Drawing.Point(95, 190);
             this.dateto.Name = "dateto";
             this.dateto.Size = new System.Drawing.Size(225, 27);
             this.dateto.TabIndex = 45;
             this.dateto.TabStop = false;
-            this.dateto.Text = "11/ذو القعدة/1442";
+            this.dateto.Text = "11 / ذو القعدة / 1442";
             this.dateto.Value = new System.DateTime(2021, 6, 21, 23, 0, 27, 610);
             // 
             // datefrom
             // 
             this.datefrom.Culture = new System.Globalization.CultureInfo("ar-SA");
+            this.datefrom.CustomFormat = "dd / MMMM / yyyy";
             this.datefrom.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.datefrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datefrom.Location = new System.Drawing.Point(95, 157);
             this.datefrom.Name = "datefrom";
             this.datefrom.Size = new System.Drawing.Size(225, 27);
             this.datefrom.TabIndex = 44;
             this.datefrom.TabStop = false;
-            this.datefrom.Text = "11/ذو القعدة/1442";
+            this.datefrom.Text = "11 / ذو القعدة / 1442";
             this.datefrom.Value = new System.DateTime(2021, 6, 21, 23, 0, 27, 610);
             // 
             // label4

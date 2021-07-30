@@ -7,25 +7,22 @@ using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace STDApp
 {
-    public partial class DutyFrm : Form
+    public partial class StudentFrm : Form
     {
-        Duty model = new Duty();
-        public DutyFrm()
+        Student model = new Student();
+        public StudentFrm()
         {
             InitializeComponent();
         }
-
         void clear()
         {
-            txtduty.Text = "";
-            // txtDutyNumber.Text = "";
-            datedutyfinal.Value = DateTime.Now;
-            radDropSubject.SelectedIndex = -1;
+            txtcivilnumber.Text = "";
+            txtname.Text = "";
+            txtmobile.Text = "0";
             radDropDepartment.SelectedIndex = -1;
             radDropclasses.SelectedIndex = -1;
             AddBtn.Text = "إضافة";
@@ -38,47 +35,39 @@ namespace STDApp
             radGrid.AutoGenerateColumns = false;
             using (STDEntities db = new STDEntities())
             {
-                radGrid.DataSource = (from duty in db.Duty
-                                      join dep in db.Department on duty.Department_Id equals dep.ID
+                radGrid.DataSource = (from std in db.Student
+                                      join dep in db.Department on std.Department_Id equals dep.ID
                                       join clas in db.Class on dep.Class_Id equals clas.ID
-                                      join sub in db.Subject on duty.Subject_Id equals sub.ID
                                       //where condtion if any                                             
                                       select new
                                       {
                                           //Column list here
-                                          ID = duty.ID,
-                                          Name = duty.Name,
-                                          Number = duty.Number,
-                                          Expire = duty.Expire,
+                                          ID = std.ID,
+                                          Name = std.Name,
+                                          Mobile = std.Mobile,
+                                          CivilNumber = std.CivilNumber,
                                           ClassId = dep.Class_Id,
                                           ClassName = clas.Name,
-                                          DepartmentId = duty.Department_Id,
-                                          DepartmentName = dep.Name,
-                                          SubjectId = duty.Subject_Id,
-                                          SubjectName = sub.Name
+                                          DepartmentId = std.Department_Id,
+                                          DepartmentName = dep.Name
                                       }).ToList();
                 radGrid.Refresh();
 
             }
-
+            
             using (STDEntities db = new STDEntities())
             {
                 radDropclasses.ValueMember = "ID";
                 radDropclasses.DisplayMember = "Name";
-                radDropclasses.DataSource = db.Class.ToList<Class>().OrderBy(a => a.ID);
+                radDropclasses.DataSource = db.Class.ToList<Class>().OrderBy(a => a.ID);               
                 radDropclasses.SelectedIndex = -1;
-            }
+            }       
 
         }
-        private void DutyFrm_Load(object sender, EventArgs e)
-        {
-            clear();
-            PopulateDataGridView();
-        }
 
-        private void txtDutyNumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtcivilnumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&(e.KeyChar != '.'))
             {
                 e.Handled = true;
             }
@@ -90,28 +79,29 @@ namespace STDApp
             }
         }
 
+        private void txtmobile_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&(e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void StudentFrm_Load(object sender, EventArgs e)
+        {
+            clear();
+            PopulateDataGridView();
+        }
+
         private void CancelBtn_Click(object sender, EventArgs e)
         {
             clear();
-        }
-
-        private void radDropclasses_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
-        {
-            using (STDEntities db = new STDEntities())
-            {
-                var x = Convert.ToInt32(radDropclasses.SelectedValue);
-                radDropDepartment.DataSource = db.Department
-                        .Where(dep => dep.Class_Id == x).ToList().OrderBy(a => a.ID);
-                radDropDepartment.ValueMember = "ID";
-                radDropDepartment.DisplayMember = "Name";
-                radDropDepartment.SelectedIndex = -1;
-
-                radDropSubject.DataSource = db.Subject
-                       .Where(sub => sub.Class_Id == x).ToList().OrderBy(a => a.ID);
-                radDropSubject.ValueMember = "ID";
-                radDropSubject.DisplayMember = "Name";
-                radDropSubject.SelectedIndex = -1;
-            }
         }
 
         string msg = "";
@@ -127,52 +117,38 @@ namespace STDApp
             {
                 msg = "- اختر الفصل ";
             }
-            if (radDropSubject.SelectedIndex == -1)
+            if (string.IsNullOrEmpty(txtname.Text.Trim()))
             {
-                msg = "- اختر المادة ";
+                msg += "- ادخل الاسم ";
             }
-            if (string.IsNullOrEmpty(txtduty.Text.Trim()))
+            if (string.IsNullOrEmpty(txtmobile.Text.Trim()) || txtmobile.Text.Trim() == "0" || txtmobile.TextLength < 10)
             {
-                msg += "- ادخل الواجب المطلوب ";
+                msg += "- ادخل جوال ولي الأمر ";
             }
-            //if (string.IsNullOrEmpty(txtDutyNumber.Text.Trim()))
-            //{
-            //    msg += "- ادخل رقم الواجب ";
-            //}
-
+            if (string.IsNullOrEmpty(txtcivilnumber.Text.Trim()) || txtcivilnumber.TextLength < 10)
+            {
+                msg += "- ادخل رقم الهوية ";
+            }
             if (msg == "")
             {
-                using (STDEntities db = new STDEntities())
-                {
-                    if (db.Duty.Count() > 0)
-                    {
-                        int i = db.Duty.Max(a => a.ID);
-                        var result = db.Duty.Find(i);
-                        model.Number = (Convert.ToInt32(result.Number) + 1).ToString();
-                    }
-                    else
-                        model.Number = (1).ToString();
-
-
-                }
-
-                model.Name = txtduty.Text.Trim();
-                model.Expire = datedutyfinal.Text;
-                model.Subject_Id = Convert.ToInt32(radDropSubject.SelectedValue);
+                model.Name = txtname.Text.Trim();
+                model.Mobile = txtmobile.Text.Trim();
+                model.CivilNumber = txtcivilnumber.Text.Trim();
+                model.Points = 0;
                 model.Department_Id = Convert.ToInt32(radDropDepartment.SelectedValue);
-
+                
                 using (STDEntities db = new STDEntities())
                 {
                     if (model.ID == 0)
                     {
-                        if (IsDutyAvailable(model.Number, model.Department_Id))
+                        if (IsNameAvailable(model.Name))
                         {
-                            db.Duty.Add(model);
+                            db.Student.Add(model);
                             //MessageBox.Show("تمت الإضافة بنجاح");
                         }
                         else
                         {
-                            MessageBox.Show("لايمكن تكرار رقم الواجب");
+                            MessageBox.Show("لا يمكن تكرار الاسم");
                             return;
                         }
 
@@ -195,16 +171,32 @@ namespace STDApp
             }
         }
 
-        public bool IsDutyAvailable(string num, int id)
+        public bool IsNameAvailable(string name)
         {
             using (STDEntities db = new STDEntities())
             {
-                bool duty = db.Duty.Where(m => m.Department_Id == id).Where(x => x.Number == num).Any();
+                bool Number = db.Student.Where(m => m.Name == name).Any();
 
-                return !duty;
+                return !Number;
 
             }
         }
+
+        private void radDropclasses_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+           
+               using (STDEntities db = new STDEntities())
+                {
+                var x = Convert.ToInt32(radDropclasses.SelectedValue);
+                radDropDepartment.DataSource = db.Department
+                        .Where(dep => dep.Class_Id == x).ToList().OrderBy(a => a.ID);
+                    radDropDepartment.ValueMember = "ID";
+                    radDropDepartment.DisplayMember = "Name";
+                    radDropDepartment.SelectedIndex = -1;
+                }         
+
+        }
+
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("هل أنت متأكد من الحذف؟", "حذف", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -213,8 +205,8 @@ namespace STDApp
                 {
                     var entry = db.Entry(model);
                     if (entry.State == EntityState.Detached)
-                        db.Duty.Attach(model);
-                    db.Duty.Remove(model);
+                        db.Student.Attach(model);
+                    db.Student.Remove(model);
                     try
                     {
                         db.SaveChanges();
@@ -226,33 +218,32 @@ namespace STDApp
                     {
                         if (ex.InnerException.Message.Equals("An error occurred while updating the entries. See the inner exception for details."))
                         {
-                            MessageBox.Show("يجب حذف الطلاب الذين أتمو الواجب");
+                            MessageBox.Show("يجب حذف البيانات الأسبوعية التابعة للطالب");
                         }
                     }
+                  
+
                 }
             }
         }
 
-
-        private void RadGridView_DoubleClick(object sender, EventArgs e)
+        private void radGrid_DoubleClick(object sender, EventArgs e)
         {
             if (radGrid.CurrentRow.Index != -1)
             {
                 model.ID = Convert.ToInt32(radGrid.CurrentRow.Cells["ID"].Value);
                 using (STDEntities db = new STDEntities())
                 {
-                    model = db.Duty.Where(x => x.ID == model.ID).FirstOrDefault();
-                    txtduty.Text = model.Name;
-                    //txtDutyNumber.Text = model.Number;
-                    datedutyfinal.Text = model.Expire;
+                    model = db.Student.Where(x => x.ID == model.ID).FirstOrDefault();
+                    txtname.Text = model.Name;
+                    txtmobile.Text = model.Mobile;
+                    txtcivilnumber.Text = model.CivilNumber;
                     radDropclasses.SelectedValue = Convert.ToInt32(radGrid.CurrentRow.Cells["ClassId"].Value);
                     radDropDepartment.SelectedValue = model.Department_Id;
-                    radDropSubject.SelectedValue = model.Subject_Id;
                 }
                 AddBtn.Text = "تعديل";
                 DeleteBtn.Enabled = true;
             }
-
         }
     }
 }

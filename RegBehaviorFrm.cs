@@ -134,7 +134,7 @@ namespace STDApp
                                                    DepartmentName = radDropDepartment.SelectedItem.Text
                                                }).ToList();
                     PopulateDataGridView();
-                    radGridView.Columns[11].Width = 150;
+                    radGridView.Columns[11].Width = 250;
                 }
             }
         }
@@ -244,7 +244,9 @@ namespace STDApp
             behaviorBindingSource.DataSource = dbContext.Behavior.Where(a => a.Week_Id == -1).ToList();
             radGridView1.DataSource = null;
             radDropweek.SelectedIndex = -1;
+            radDropSubject.SelectedIndexChanged -= radDropSubject_SelectedIndexChanged;
             radDropSubject.SelectedIndex = -1;
+            radDropSubject.SelectedIndexChanged += radDropSubject_SelectedIndexChanged;
         }
 
         private void radDropSubject_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)

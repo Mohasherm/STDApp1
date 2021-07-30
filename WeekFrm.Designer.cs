@@ -29,11 +29,11 @@ namespace STDApp
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.datefrom = new Telerik.WinControls.UI.RadDateTimePicker();
             this.dateto = new Telerik.WinControls.UI.RadDateTimePicker();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
@@ -60,25 +60,29 @@ namespace STDApp
             // datefrom
             // 
             this.datefrom.Culture = new System.Globalization.CultureInfo("ar-SA");
+            this.datefrom.CustomFormat = "dd / MMMM / yyyy";
             this.datefrom.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.datefrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datefrom.Location = new System.Drawing.Point(111, 82);
             this.datefrom.Name = "datefrom";
             this.datefrom.Size = new System.Drawing.Size(208, 27);
             this.datefrom.TabIndex = 0;
             this.datefrom.TabStop = false;
-            this.datefrom.Text = "11/ذو القعدة/1442";
+            this.datefrom.Text = "11 / ذو القعدة / 1442";
             this.datefrom.Value = new System.DateTime(2021, 6, 21, 23, 0, 27, 610);
             // 
             // dateto
             // 
             this.dateto.Culture = new System.Globalization.CultureInfo("ar-SA");
+            this.dateto.CustomFormat = "dd / MMMM / yyyy";
             this.dateto.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.dateto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateto.Location = new System.Drawing.Point(111, 140);
             this.dateto.Name = "dateto";
             this.dateto.Size = new System.Drawing.Size(208, 27);
             this.dateto.TabIndex = 1;
             this.dateto.TabStop = false;
-            this.dateto.Text = "11/ذو القعدة/1442";
+            this.dateto.Text = "11 / ذو القعدة / 1442";
             this.dateto.Value = new System.DateTime(2021, 6, 21, 23, 0, 27, 610);
             // 
             // radLabel1
@@ -134,33 +138,33 @@ namespace STDApp
             // 
             this.radGrid.MasterTemplate.AllowAddNewRow = false;
             this.radGrid.MasterTemplate.AllowColumnReorder = false;
-            gridViewTextBoxColumn1.FieldName = "ID";
-            gridViewTextBoxColumn1.HeaderText = "ID";
-            gridViewTextBoxColumn1.IsVisible = false;
-            gridViewTextBoxColumn1.Name = "ID";
-            gridViewTextBoxColumn2.FieldName = "Number";
-            gridViewTextBoxColumn2.HeaderText = "رقم الأسبوع";
-            gridViewTextBoxColumn2.Name = "Number";
-            gridViewTextBoxColumn2.Width = 100;
-            gridViewTextBoxColumn3.FieldName = "Start";
-            gridViewTextBoxColumn3.FormatInfo = new System.Globalization.CultureInfo("ar-SA");
-            gridViewTextBoxColumn3.HeaderText = "من تاريخ";
-            gridViewTextBoxColumn3.Name = "Start";
-            gridViewTextBoxColumn3.Width = 150;
-            gridViewTextBoxColumn4.FieldName = "Finish";
-            gridViewTextBoxColumn4.FormatInfo = new System.Globalization.CultureInfo("ar-SA");
-            gridViewTextBoxColumn4.HeaderText = "إلى تاريخ";
-            gridViewTextBoxColumn4.Name = "Finish";
-            gridViewTextBoxColumn4.Width = 150;
+            gridViewTextBoxColumn5.FieldName = "ID";
+            gridViewTextBoxColumn5.HeaderText = "ID";
+            gridViewTextBoxColumn5.IsVisible = false;
+            gridViewTextBoxColumn5.Name = "ID";
+            gridViewTextBoxColumn6.FieldName = "Number";
+            gridViewTextBoxColumn6.HeaderText = "رقم الأسبوع";
+            gridViewTextBoxColumn6.Name = "Number";
+            gridViewTextBoxColumn6.Width = 100;
+            gridViewTextBoxColumn7.FieldName = "Start";
+            gridViewTextBoxColumn7.FormatInfo = new System.Globalization.CultureInfo("ar-SA");
+            gridViewTextBoxColumn7.HeaderText = "من تاريخ";
+            gridViewTextBoxColumn7.Name = "Start";
+            gridViewTextBoxColumn7.Width = 150;
+            gridViewTextBoxColumn8.FieldName = "Finish";
+            gridViewTextBoxColumn8.FormatInfo = new System.Globalization.CultureInfo("ar-SA");
+            gridViewTextBoxColumn8.HeaderText = "إلى تاريخ";
+            gridViewTextBoxColumn8.Name = "Finish";
+            gridViewTextBoxColumn8.Width = 150;
             this.radGrid.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2,
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4});
+            gridViewTextBoxColumn5,
+            gridViewTextBoxColumn6,
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8});
             this.radGrid.MasterTemplate.EnableAlternatingRowColor = true;
             this.radGrid.MasterTemplate.EnableFiltering = true;
             this.radGrid.MasterTemplate.EnableGrouping = false;
-            this.radGrid.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.radGrid.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.radGrid.Name = "radGrid";
             this.radGrid.ReadOnly = true;
             this.radGrid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

@@ -106,6 +106,7 @@ namespace STDApp
             gridViewTextBoxColumn4.HeaderText = "الإختبار";
             gridViewTextBoxColumn4.Name = "Test";
             gridViewTextBoxColumn4.Width = 270;
+            gridViewTextBoxColumn4.WrapText = true;
             gridViewTextBoxColumn5.EnableExpressionEditor = false;
             gridViewTextBoxColumn5.FieldName = "ClassId";
             gridViewTextBoxColumn5.HeaderText = "ClassId";
@@ -228,13 +229,15 @@ namespace STDApp
             // datefinal
             // 
             this.datefinal.Culture = new System.Globalization.CultureInfo("ar-SA");
+            this.datefinal.CustomFormat = "dd / MMMM / yyyy";
             this.datefinal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.datefinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datefinal.Location = new System.Drawing.Point(102, 144);
             this.datefinal.Name = "datefinal";
             this.datefinal.Size = new System.Drawing.Size(342, 27);
             this.datefinal.TabIndex = 50;
             this.datefinal.TabStop = false;
-            this.datefinal.Text = "11/ذو القعدة/1442";
+            this.datefinal.Text = "11 / ذو القعدة / 1442";
             this.datefinal.Value = new System.DateTime(2021, 6, 21, 23, 0, 27, 610);
             // 
             // label5

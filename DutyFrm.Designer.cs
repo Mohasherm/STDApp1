@@ -277,14 +277,16 @@ namespace STDApp
             // datedutyfinal
             // 
             this.datedutyfinal.Culture = new System.Globalization.CultureInfo("ar-SA");
+            this.datedutyfinal.CustomFormat = "dd / MMMM / yyyy";
             this.datedutyfinal.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.datedutyfinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datedutyfinal.Location = new System.Drawing.Point(144, 456);
             this.datedutyfinal.MinDate = new System.DateTime(1900, 4, 30, 0, 0, 0, 0);
             this.datedutyfinal.Name = "datedutyfinal";
             this.datedutyfinal.Size = new System.Drawing.Size(225, 27);
             this.datedutyfinal.TabIndex = 39;
             this.datedutyfinal.TabStop = false;
-            this.datedutyfinal.Text = "13/ذو القعدة/1442";
+            this.datedutyfinal.Text = "13 / ذو القعدة / 1442";
             this.datedutyfinal.Value = new System.DateTime(2021, 6, 23, 11, 28, 30, 373);
             // 
             // DutyFrm

@@ -110,7 +110,7 @@ namespace STDApp
                                                    DepartmentName = radDropDepartment.SelectedItem.Text
                                                }).ToList();
                     PopulateDataGridView();
-                    radGridView.Columns[6].Width = 150;                   
+                    radGridView.Columns[6].Width = 250;                   
                     radGridView.Columns[2].Width = 150;
                  
                 }
