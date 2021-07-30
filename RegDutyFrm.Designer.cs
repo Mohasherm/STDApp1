@@ -30,24 +30,24 @@ namespace STDApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn1 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn2 = new Telerik.WinControls.UI.GridViewDecimalColumn();
-            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn1 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
-            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn2 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn1 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn2 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn3 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn4 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn5 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn6 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn3 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewDecimalColumn gridViewDecimalColumn4 = new Telerik.WinControls.UI.GridViewDecimalColumn();
+            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn3 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
+            Telerik.WinControls.UI.GridViewCheckBoxColumn gridViewCheckBoxColumn4 = new Telerik.WinControls.UI.GridViewCheckBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn7 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn8 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn9 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn10 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn11 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn12 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem7 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem8 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem9 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.radDropDuty = new Telerik.WinControls.UI.RadDropDownList();
             this.lblweek = new System.Windows.Forms.Label();
@@ -101,17 +101,17 @@ namespace STDApp
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1014, 53);
+            this.radPanel1.Size = new System.Drawing.Size(1051, 53);
             this.radPanel1.TabIndex = 3;
             // 
             // radDropDuty
             // 
             this.radDropDuty.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropDuty.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radDropDuty.Location = new System.Drawing.Point(30, 11);
+            this.radDropDuty.Location = new System.Drawing.Point(12, 12);
             this.radDropDuty.MaxLength = 25;
             this.radDropDuty.Name = "radDropDuty";
-            this.radDropDuty.Size = new System.Drawing.Size(160, 27);
+            this.radDropDuty.Size = new System.Drawing.Size(233, 27);
             this.radDropDuty.TabIndex = 41;
             this.radDropDuty.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.radDropDuty_SelectedIndexChanged);
             // 
@@ -119,7 +119,7 @@ namespace STDApp
             // 
             this.lblweek.AutoSize = true;
             this.lblweek.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.lblweek.Location = new System.Drawing.Point(196, 12);
+            this.lblweek.Location = new System.Drawing.Point(251, 15);
             this.lblweek.Name = "lblweek";
             this.lblweek.Size = new System.Drawing.Size(64, 21);
             this.lblweek.TabIndex = 40;
@@ -129,7 +129,7 @@ namespace STDApp
             // 
             this.radDropSubject.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropSubject.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radDropSubject.Location = new System.Drawing.Point(284, 11);
+            this.radDropSubject.Location = new System.Drawing.Point(334, 13);
             this.radDropSubject.Name = "radDropSubject";
             this.radDropSubject.Size = new System.Drawing.Size(160, 27);
             this.radDropSubject.TabIndex = 39;
@@ -139,7 +139,7 @@ namespace STDApp
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(450, 13);
+            this.label3.Location = new System.Drawing.Point(500, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 21);
             this.label3.TabIndex = 38;
@@ -149,7 +149,7 @@ namespace STDApp
             // 
             this.radDropDepartment.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropDepartment.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radDropDepartment.Location = new System.Drawing.Point(535, 11);
+            this.radDropDepartment.Location = new System.Drawing.Point(585, 13);
             this.radDropDepartment.Name = "radDropDepartment";
             this.radDropDepartment.Size = new System.Drawing.Size(160, 27);
             this.radDropDepartment.TabIndex = 37;
@@ -159,7 +159,7 @@ namespace STDApp
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(701, 13);
+            this.label2.Location = new System.Drawing.Point(751, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 21);
             this.label2.TabIndex = 36;
@@ -169,7 +169,7 @@ namespace STDApp
             // 
             this.radDropclasses.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropclasses.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.radDropclasses.Location = new System.Drawing.Point(785, 11);
+            this.radDropclasses.Location = new System.Drawing.Point(822, 12);
             this.radDropclasses.Name = "radDropclasses";
             this.radDropclasses.Size = new System.Drawing.Size(160, 27);
             this.radDropclasses.TabIndex = 35;
@@ -179,7 +179,7 @@ namespace STDApp
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.Location = new System.Drawing.Point(951, 14);
+            this.label1.Location = new System.Drawing.Point(988, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 21);
             this.label1.TabIndex = 34;
@@ -193,66 +193,66 @@ namespace STDApp
             this.radGridView.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.radGridView.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radGridView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radGridView.Location = new System.Drawing.Point(341, 53);
+            this.radGridView.Location = new System.Drawing.Point(378, 53);
             // 
             // 
             // 
             this.radGridView.MasterTemplate.AllowAddNewRow = false;
             this.radGridView.MasterTemplate.AllowSearchRow = true;
-            gridViewDecimalColumn1.DataType = typeof(int);
-            gridViewDecimalColumn1.EnableExpressionEditor = false;
-            gridViewDecimalColumn1.FieldName = "Student_Id";
-            gridViewDecimalColumn1.HeaderText = "Student_Id";
-            gridViewDecimalColumn1.IsAutoGenerated = true;
-            gridViewDecimalColumn1.IsVisible = false;
-            gridViewDecimalColumn1.Name = "Student_Id";
-            gridViewDecimalColumn2.DataType = typeof(int);
-            gridViewDecimalColumn2.EnableExpressionEditor = false;
-            gridViewDecimalColumn2.FieldName = "Duty_Id";
-            gridViewDecimalColumn2.HeaderText = "Duty_Id";
-            gridViewDecimalColumn2.IsAutoGenerated = true;
-            gridViewDecimalColumn2.IsVisible = false;
-            gridViewDecimalColumn2.Name = "Duty_Id";
-            gridViewCheckBoxColumn1.EnableExpressionEditor = false;
-            gridViewCheckBoxColumn1.FieldName = "IsSolved";
-            gridViewCheckBoxColumn1.HeaderText = "تم رصد درجة الواجب";
-            gridViewCheckBoxColumn1.IsAutoGenerated = true;
-            gridViewCheckBoxColumn1.MinWidth = 20;
-            gridViewCheckBoxColumn1.Name = "IsSolved";
-            gridViewCheckBoxColumn1.Width = 164;
-            gridViewCheckBoxColumn2.EnableExpressionEditor = false;
-            gridViewCheckBoxColumn2.FieldName = "IsEarly";
-            gridViewCheckBoxColumn2.HeaderText = "مبكر";
-            gridViewCheckBoxColumn2.IsAutoGenerated = true;
-            gridViewCheckBoxColumn2.MinWidth = 20;
-            gridViewCheckBoxColumn2.Name = "IsEarly";
-            gridViewCheckBoxColumn2.Width = 75;
-            gridViewTextBoxColumn1.DataType = typeof(STDApp.Duty);
-            gridViewTextBoxColumn1.EnableExpressionEditor = false;
-            gridViewTextBoxColumn1.FieldName = "Duty";
-            gridViewTextBoxColumn1.HeaderText = "Duty";
-            gridViewTextBoxColumn1.IsAutoGenerated = true;
-            gridViewTextBoxColumn1.IsVisible = false;
-            gridViewTextBoxColumn1.Name = "Duty";
-            gridViewTextBoxColumn2.DataType = typeof(STDApp.Student);
-            gridViewTextBoxColumn2.EnableExpressionEditor = false;
-            gridViewTextBoxColumn2.FieldName = "Student";
-            gridViewTextBoxColumn2.HeaderText = "Student";
-            gridViewTextBoxColumn2.IsAutoGenerated = true;
-            gridViewTextBoxColumn2.IsVisible = false;
-            gridViewTextBoxColumn2.Name = "Student";
+            gridViewDecimalColumn3.DataType = typeof(int);
+            gridViewDecimalColumn3.EnableExpressionEditor = false;
+            gridViewDecimalColumn3.FieldName = "Student_Id";
+            gridViewDecimalColumn3.HeaderText = "Student_Id";
+            gridViewDecimalColumn3.IsAutoGenerated = true;
+            gridViewDecimalColumn3.IsVisible = false;
+            gridViewDecimalColumn3.Name = "Student_Id";
+            gridViewDecimalColumn4.DataType = typeof(int);
+            gridViewDecimalColumn4.EnableExpressionEditor = false;
+            gridViewDecimalColumn4.FieldName = "Duty_Id";
+            gridViewDecimalColumn4.HeaderText = "Duty_Id";
+            gridViewDecimalColumn4.IsAutoGenerated = true;
+            gridViewDecimalColumn4.IsVisible = false;
+            gridViewDecimalColumn4.Name = "Duty_Id";
+            gridViewCheckBoxColumn3.EnableExpressionEditor = false;
+            gridViewCheckBoxColumn3.FieldName = "IsSolved";
+            gridViewCheckBoxColumn3.HeaderText = "تم رصد درجة الواجب";
+            gridViewCheckBoxColumn3.IsAutoGenerated = true;
+            gridViewCheckBoxColumn3.MinWidth = 20;
+            gridViewCheckBoxColumn3.Name = "IsSolved";
+            gridViewCheckBoxColumn3.Width = 164;
+            gridViewCheckBoxColumn4.EnableExpressionEditor = false;
+            gridViewCheckBoxColumn4.FieldName = "IsEarly";
+            gridViewCheckBoxColumn4.HeaderText = "مبكر";
+            gridViewCheckBoxColumn4.IsAutoGenerated = true;
+            gridViewCheckBoxColumn4.MinWidth = 20;
+            gridViewCheckBoxColumn4.Name = "IsEarly";
+            gridViewCheckBoxColumn4.Width = 75;
+            gridViewTextBoxColumn7.DataType = typeof(STDApp.Duty);
+            gridViewTextBoxColumn7.EnableExpressionEditor = false;
+            gridViewTextBoxColumn7.FieldName = "Duty";
+            gridViewTextBoxColumn7.HeaderText = "Duty";
+            gridViewTextBoxColumn7.IsAutoGenerated = true;
+            gridViewTextBoxColumn7.IsVisible = false;
+            gridViewTextBoxColumn7.Name = "Duty";
+            gridViewTextBoxColumn8.DataType = typeof(STDApp.Student);
+            gridViewTextBoxColumn8.EnableExpressionEditor = false;
+            gridViewTextBoxColumn8.FieldName = "Student";
+            gridViewTextBoxColumn8.HeaderText = "Student";
+            gridViewTextBoxColumn8.IsAutoGenerated = true;
+            gridViewTextBoxColumn8.IsVisible = false;
+            gridViewTextBoxColumn8.Name = "Student";
             this.radGridView.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewDecimalColumn1,
-            gridViewDecimalColumn2,
-            gridViewCheckBoxColumn1,
-            gridViewCheckBoxColumn2,
-            gridViewTextBoxColumn1,
-            gridViewTextBoxColumn2});
+            gridViewDecimalColumn3,
+            gridViewDecimalColumn4,
+            gridViewCheckBoxColumn3,
+            gridViewCheckBoxColumn4,
+            gridViewTextBoxColumn7,
+            gridViewTextBoxColumn8});
             this.radGridView.MasterTemplate.DataSource = this.studentDutyBindingSource;
             this.radGridView.MasterTemplate.EnableAlternatingRowColor = true;
             this.radGridView.MasterTemplate.EnableGrouping = false;
             this.radGridView.MasterTemplate.EnableSorting = false;
-            this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.radGridView.Name = "radGridView";
             this.radGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.radGridView.Size = new System.Drawing.Size(673, 471);
@@ -267,7 +267,7 @@ namespace STDApp
             // AddBtn
             // 
             this.AddBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.AddBtn.Location = new System.Drawing.Point(246, 401);
+            this.AddBtn.Location = new System.Drawing.Point(283, 401);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(89, 39);
             this.AddBtn.TabIndex = 55;
@@ -288,39 +288,39 @@ namespace STDApp
             // 
             this.radGridView1.MasterTemplate.AllowAddNewRow = false;
             this.radGridView1.MasterTemplate.AllowSearchRow = true;
-            gridViewTextBoxColumn3.EnableExpressionEditor = false;
-            gridViewTextBoxColumn3.FieldName = "ID";
-            gridViewTextBoxColumn3.HeaderText = "ID";
-            gridViewTextBoxColumn3.IsVisible = false;
-            gridViewTextBoxColumn3.Name = "ID";
-            gridViewTextBoxColumn4.EnableExpressionEditor = false;
-            gridViewTextBoxColumn4.FieldName = "Name";
-            gridViewTextBoxColumn4.HeaderText = "الطالب";
-            gridViewTextBoxColumn4.Name = "Name";
-            gridViewTextBoxColumn4.Width = 175;
-            gridViewTextBoxColumn5.EnableExpressionEditor = false;
-            gridViewTextBoxColumn5.FieldName = "DepartmentId";
-            gridViewTextBoxColumn5.HeaderText = "DepartmentId";
-            gridViewTextBoxColumn5.IsVisible = false;
-            gridViewTextBoxColumn5.Name = "DepartmentId";
-            gridViewTextBoxColumn6.EnableExpressionEditor = false;
-            gridViewTextBoxColumn6.FieldName = "DepartmentName";
-            gridViewTextBoxColumn6.HeaderText = "الفصل";
-            gridViewTextBoxColumn6.Name = "DepartmentName";
-            gridViewTextBoxColumn6.Width = 145;
+            gridViewTextBoxColumn9.EnableExpressionEditor = false;
+            gridViewTextBoxColumn9.FieldName = "ID";
+            gridViewTextBoxColumn9.HeaderText = "ID";
+            gridViewTextBoxColumn9.IsVisible = false;
+            gridViewTextBoxColumn9.Name = "ID";
+            gridViewTextBoxColumn10.EnableExpressionEditor = false;
+            gridViewTextBoxColumn10.FieldName = "Name";
+            gridViewTextBoxColumn10.HeaderText = "الطالب";
+            gridViewTextBoxColumn10.Name = "Name";
+            gridViewTextBoxColumn10.Width = 250;
+            gridViewTextBoxColumn11.EnableExpressionEditor = false;
+            gridViewTextBoxColumn11.FieldName = "DepartmentId";
+            gridViewTextBoxColumn11.HeaderText = "DepartmentId";
+            gridViewTextBoxColumn11.IsVisible = false;
+            gridViewTextBoxColumn11.Name = "DepartmentId";
+            gridViewTextBoxColumn12.EnableExpressionEditor = false;
+            gridViewTextBoxColumn12.FieldName = "DepartmentName";
+            gridViewTextBoxColumn12.HeaderText = "الفصل";
+            gridViewTextBoxColumn12.Name = "DepartmentName";
+            gridViewTextBoxColumn12.Width = 100;
             this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
-            gridViewTextBoxColumn3,
-            gridViewTextBoxColumn4,
-            gridViewTextBoxColumn5,
-            gridViewTextBoxColumn6});
+            gridViewTextBoxColumn9,
+            gridViewTextBoxColumn10,
+            gridViewTextBoxColumn11,
+            gridViewTextBoxColumn12});
             this.radGridView1.MasterTemplate.EnableFiltering = true;
             this.radGridView1.MasterTemplate.EnableGrouping = false;
             this.radGridView1.MasterTemplate.MultiSelect = true;
-            this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.radGridView1.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.radGridView1.Name = "radGridView1";
             this.radGridView1.ReadOnly = true;
             this.radGridView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radGridView1.Size = new System.Drawing.Size(341, 342);
+            this.radGridView1.Size = new System.Drawing.Size(378, 342);
             this.radGridView1.TabIndex = 56;
             // 
             // chkSolved
@@ -335,7 +335,7 @@ namespace STDApp
             // chkEarly
             // 
             this.chkEarly.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.chkEarly.Location = new System.Drawing.Point(179, 401);
+            this.chkEarly.Location = new System.Drawing.Point(198, 401);
             this.chkEarly.Name = "chkEarly";
             this.chkEarly.Size = new System.Drawing.Size(52, 25);
             this.chkEarly.TabIndex = 58;
@@ -345,15 +345,15 @@ namespace STDApp
             // 
             this.radDropMemory.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropMemory.Font = new System.Drawing.Font("Segoe UI", 12F);
-            radListDataItem1.Text = "جيد";
-            radListDataItem2.Text = "جيد جداً";
-            radListDataItem3.Text = "ممتاز";
-            this.radDropMemory.Items.Add(radListDataItem1);
-            this.radDropMemory.Items.Add(radListDataItem2);
-            this.radDropMemory.Items.Add(radListDataItem3);
-            this.radDropMemory.Location = new System.Drawing.Point(67, 485);
+            radListDataItem7.Text = "جيد";
+            radListDataItem8.Text = "جيد جداً";
+            radListDataItem9.Text = "ممتاز";
+            this.radDropMemory.Items.Add(radListDataItem7);
+            this.radDropMemory.Items.Add(radListDataItem8);
+            this.radDropMemory.Items.Add(radListDataItem9);
+            this.radDropMemory.Location = new System.Drawing.Point(58, 485);
             this.radDropMemory.Name = "radDropMemory";
-            this.radDropMemory.Size = new System.Drawing.Size(100, 27);
+            this.radDropMemory.Size = new System.Drawing.Size(115, 27);
             this.radDropMemory.TabIndex = 60;
             this.radDropMemory.Visible = false;
             // 
@@ -372,15 +372,15 @@ namespace STDApp
             // 
             this.radDropRead.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.radDropRead.Font = new System.Drawing.Font("Segoe UI", 12F);
-            radListDataItem4.Text = "جيد";
-            radListDataItem5.Text = "جيد جداً";
-            radListDataItem6.Text = "ممتاز";
-            this.radDropRead.Items.Add(radListDataItem4);
-            this.radDropRead.Items.Add(radListDataItem5);
-            this.radDropRead.Items.Add(radListDataItem6);
-            this.radDropRead.Location = new System.Drawing.Point(235, 485);
+            radListDataItem1.Text = "جيد";
+            radListDataItem2.Text = "جيد جداً";
+            radListDataItem3.Text = "ممتاز";
+            this.radDropRead.Items.Add(radListDataItem1);
+            this.radDropRead.Items.Add(radListDataItem2);
+            this.radDropRead.Items.Add(radListDataItem3);
+            this.radDropRead.Location = new System.Drawing.Point(257, 485);
             this.radDropRead.Name = "radDropRead";
-            this.radDropRead.Size = new System.Drawing.Size(100, 27);
+            this.radDropRead.Size = new System.Drawing.Size(115, 27);
             this.radDropRead.TabIndex = 62;
             this.radDropRead.Visible = false;
             // 
@@ -388,7 +388,7 @@ namespace STDApp
             // 
             this.lblread.AutoSize = true;
             this.lblread.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblread.Location = new System.Drawing.Point(194, 488);
+            this.lblread.Location = new System.Drawing.Point(210, 488);
             this.lblread.Name = "lblread";
             this.lblread.Size = new System.Drawing.Size(35, 20);
             this.lblread.TabIndex = 61;
@@ -399,7 +399,7 @@ namespace STDApp
             // 
             this.lblnote.AutoSize = true;
             this.lblnote.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblnote.Location = new System.Drawing.Point(19, 445);
+            this.lblnote.Location = new System.Drawing.Point(19, 449);
             this.lblnote.Name = "lblnote";
             this.lblnote.Size = new System.Drawing.Size(101, 20);
             this.lblnote.TabIndex = 63;
@@ -411,7 +411,7 @@ namespace STDApp
             this.txtnote.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtnote.Location = new System.Drawing.Point(126, 446);
             this.txtnote.Name = "txtnote";
-            this.txtnote.Size = new System.Drawing.Size(209, 27);
+            this.txtnote.Size = new System.Drawing.Size(246, 27);
             this.txtnote.TabIndex = 64;
             this.txtnote.Visible = false;
             // 
@@ -420,7 +420,7 @@ namespace STDApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1014, 524);
+            this.ClientSize = new System.Drawing.Size(1051, 524);
             this.Controls.Add(this.txtnote);
             this.Controls.Add(this.lblnote);
             this.Controls.Add(this.radDropRead);

@@ -129,7 +129,6 @@ namespace STDApp
             gridViewTextBoxColumn8});
             this.radGrid.MasterTemplate.EnableAlternatingRowColor = true;
             this.radGrid.MasterTemplate.EnableFiltering = true;
-            this.radGrid.MasterTemplate.EnableGrouping = false;
             this.radGrid.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGrid.Name = "radGrid";
             this.radGrid.ReadOnly = true;

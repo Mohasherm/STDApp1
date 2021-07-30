@@ -181,7 +181,7 @@ namespace STDApp
             this.radGridView.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.radGridView.ForeColor = System.Drawing.SystemColors.ControlText;
             this.radGridView.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radGridView.Location = new System.Drawing.Point(450, 53);
+            this.radGridView.Location = new System.Drawing.Point(385, 53);
             // 
             // 
             // 
@@ -265,7 +265,7 @@ namespace STDApp
             this.radGridView.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.radGridView.Name = "radGridView";
             this.radGridView.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radGridView.Size = new System.Drawing.Size(447, 397);
+            this.radGridView.Size = new System.Drawing.Size(512, 397);
             this.radGridView.TabIndex = 43;
             this.radGridView.UserDeletingRow += new Telerik.WinControls.UI.GridViewRowCancelEventHandler(this.MasterTemplate_UserDeletingRow);
             this.radGridView.CellValueChanged += new Telerik.WinControls.UI.GridViewCellEventHandler(this.MasterTemplate_CellValueChanged);
@@ -296,7 +296,7 @@ namespace STDApp
             gridViewTextBoxColumn4.FieldName = "Name";
             gridViewTextBoxColumn4.HeaderText = "الطالب";
             gridViewTextBoxColumn4.Name = "Name";
-            gridViewTextBoxColumn4.Width = 200;
+            gridViewTextBoxColumn4.Width = 250;
             gridViewTextBoxColumn5.EnableExpressionEditor = false;
             gridViewTextBoxColumn5.FieldName = "DepartmentId";
             gridViewTextBoxColumn5.HeaderText = "DepartmentId";
@@ -306,7 +306,7 @@ namespace STDApp
             gridViewTextBoxColumn6.FieldName = "DepartmentName";
             gridViewTextBoxColumn6.HeaderText = "الفصل";
             gridViewTextBoxColumn6.Name = "DepartmentName";
-            gridViewTextBoxColumn6.Width = 200;
+            gridViewTextBoxColumn6.Width = 100;
             this.radGridView1.MasterTemplate.Columns.AddRange(new Telerik.WinControls.UI.GridViewDataColumn[] {
             gridViewTextBoxColumn3,
             gridViewTextBoxColumn4,
@@ -319,13 +319,13 @@ namespace STDApp
             this.radGridView1.Name = "radGridView1";
             this.radGridView1.ReadOnly = true;
             this.radGridView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radGridView1.Size = new System.Drawing.Size(450, 342);
+            this.radGridView1.Size = new System.Drawing.Size(385, 342);
             this.radGridView1.TabIndex = 44;
             // 
             // AddBtn
             // 
             this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddBtn.Location = new System.Drawing.Point(322, 401);
+            this.AddBtn.Location = new System.Drawing.Point(279, 399);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(100, 39);
             this.AddBtn.TabIndex = 51;
@@ -353,7 +353,7 @@ namespace STDApp
             // chkattend
             // 
             this.chkattend.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkattend.Location = new System.Drawing.Point(206, 413);
+            this.chkattend.Location = new System.Drawing.Point(183, 413);
             this.chkattend.Name = "chkattend";
             this.chkattend.Size = new System.Drawing.Size(67, 22);
             this.chkattend.TabIndex = 59;
