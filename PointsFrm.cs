@@ -327,29 +327,38 @@ namespace STDApp
 
         void ClacTaskPoints(List<Student> std)
         {
-           
+            List<RegisterTask> lst = new List<RegisterTask>();
             foreach (var data in std)
             {
-                model.ID = data.ID;
-                int y=dbContext.RegisterTask.Where(a => a.Student_Id == data.ID).Select(a => a.Degree).FirstOrDefault();
-                var x = dbContext.RegisterTask.Where(a => a.Student_Id == data.ID).Select(a => a.IsEarly).FirstOrDefault();
-                if (x)
-                {                  
+
+                lst.Add(dbContext.RegisterTask.Where(a => a.Student_Id == data.ID).FirstOrDefault());
+            }
+
+            foreach (var item in lst)
+            {
+                if (item != null)
+                {
+                    model.ID = item.Student_Id;
+                    int y = item.Degree; // dbContext.RegisterTask.Where(a => a.Student_Id == data.ID).Select(a => a.Degree).FirstOrDefault();
+                   // var x = item.IsEarly; // dbContext.RegisterTask.Where(a => a.Student_Id == data.ID).Select(a => a.IsEarly).FirstOrDefault();
+                  
+                        using (STDEntities db = new STDEntities())
+                        {
+                            int i = db.Student.Where(a => a.ID == item.Student_Id).Select(a => a.Points).FirstOrDefault();
+                            model.Points = i + y;
+                        }
+                
+                    model.CivilNumber = item.Student.CivilNumber;
+                    model.Department_Id = item.Student.Department_Id;
+                    model.Mobile = item.Student.Mobile;
+                    model.Name = item.Student.Name;
                     using (STDEntities db = new STDEntities())
                     {
-                        int i = db.Student.Where(a => a.ID == data.ID).Select(a => a.Points).FirstOrDefault();
-                        model.Points = 5 + i + y;
+                        db.Entry(model).State = EntityState.Modified;
+                        db.SaveChanges();
                     }
                 }
-                model.CivilNumber = data.CivilNumber;
-                model.Department_Id = data.Department_Id;
-                model.Mobile = data.Mobile;
-                model.Name = data.Name;
-                using (STDEntities db = new STDEntities())
-                {
-                    db.Entry(model).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
+               
             }
         }
 
